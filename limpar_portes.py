@@ -3,7 +3,8 @@ import unicodedata
 import re
 import math
 
-INPUT_PATH = "SEMA_ANEXO_I_full.csv"
+# Updated to use the uploaded filename or your original one
+INPUT_PATH = "SEMA_ANEXO_I_full.csv" 
 OUTPUT_PATH = "ANEXO_I_cleaned_with_portes.csv"
 
 
@@ -36,7 +37,17 @@ def parse_interval_to_min_max(text: str) -> tuple[float | None, float | None]:
 
     t = strip_accents(text).lower()
     t = t.replace(" ", "")
+    
+    # --- CORRECTION START ---
+    # 1. Remove thousands separators (dots) first
+    # Example: '1.000' -> '1000'
+    t = t.replace(".", "")
+    
+    # 2. Replace decimal commas with dots for Python float conversion
+    # Example: '2,0001' -> '2.0001'
     t = t.replace(",", ".")
+    # --- CORRECTION END ---
+
     nums = re.findall(r"\d+(?:\.\d+)?", t)
 
     # 'atéX' / 'AteX'  -> [0, X]
@@ -48,6 +59,7 @@ def parse_interval_to_min_max(text: str) -> tuple[float | None, float | None]:
 
     # 'deAateB' ou 'deAaB'  -> [A, B]
     if t.startswith("de"):
+        # Matches 'de', value, 'ate'/'a', value
         m = re.match(
             r"de(?P<low>\d+(?:\.\d+)?)(?:ate|a)(?P<high>\d+(?:\.\d+)?)",
             t,
@@ -76,6 +88,7 @@ def parse_interval_to_min_max(text: str) -> tuple[float | None, float | None]:
 
 
 def main():
+    # Read the CSV (force dtype=str to handle "2,0001" correctly)
     df = pd.read_csv(INPUT_PATH, dtype=str)
 
     porte_cols = [
@@ -102,7 +115,8 @@ def main():
     for col in [c for c in df_clean.columns if c.endswith("_MIN") or c.endswith("_MAX")]:
         df_clean[col] = pd.to_numeric(df_clean[col], errors="coerce")
 
-    df_clean.to_csv(OUTPUT_PATH, index=False)
+    # Save using Brazilian format (sep=; decimal=,) so Excel opens it correctly
+    df_clean.to_csv(OUTPUT_PATH, index=False, sep=';', decimal=',')
     print(f"Arquivo limpo salvo em: {OUTPUT_PATH}")
 
 

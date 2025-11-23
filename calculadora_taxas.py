@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from typing import Optional
 
 # =============================
 # CONFIGURAÇÃO DE ARQUIVOS CSV
@@ -18,10 +19,9 @@ TAXAS_CSV_PATH = "taxas_ambientais_ufar.csv"
 # CÁLCULO DE PORTE A PARTIR DE PORTE_*_MIN/MAX
 # =============================
 
-def classificar_porte_por_linha_valor(valor: float, linha: pd.Series) -> str:
+def classificar_porte_por_linha_valor(valor: float, linha: pd.Series) -> Optional[str]:
     """
-    Usa as colunas *_MIN e *_MAX numéricas da linha do ANEXO I para descobrir o porte.
-    Retorna: 'Mínimo', 'Pequeno', 'Médio', 'Grande' ou 'Excepcional'.
+    Classifica o porte com lógica inclusiva para evitar 'buracos' entre faixas.
     """
     spans = [
         ("Mínimo",       "PORTE_MINIMO_MIN",       "PORTE_MINIMO_MAX"),
@@ -35,32 +35,27 @@ def classificar_porte_por_linha_valor(valor: float, linha: pd.Series) -> str:
         lo = linha.get(col_min)
         hi = linha.get(col_max)
 
+        # Se ambos são NaN, não há definição para este porte
         if pd.isna(lo) and pd.isna(hi):
             continue
 
-        # Caso 'até X' -> lo=0, hi=X  => v <= hi
-        if pd.isna(lo) and not pd.isna(hi):
-            if valor <= hi:
-                return nome
+        # Normaliza limites
+        limit_lo = 0.0 if pd.isna(lo) else lo
+        limit_hi = float('inf') if pd.isna(hi) else hi
 
-        # Caso 'acima de X' -> lo=X, hi=NaN  => v > lo
-        elif not pd.isna(lo) and pd.isna(hi):
-            if valor > lo:
+        # Lógica de comparação
+        if limit_lo == 0.0:
+            # Faixa inicial (ex: Até 2): 0 <= valor <= 2
+            if valor <= limit_hi:
                 return nome
-
-        # Caso 'de A até B' -> lo=A, hi=B  => A < v <= B
         else:
-            if valor > lo and valor <= hi:
+            # Faixas intermediárias (ex: De 2 até 10)
+            # AQUI ESTAVA O ERRO: Mudamos de > para >=
+            # Isso garante que se o intervalo começa em 2.0, o valor 2.0 seja aceito.
+            if valor >= limit_lo and valor <= limit_hi:
                 return nome
 
-    # fallback: pega o maior porte presente, se nada bateu
-    for nome, col_min, col_max in reversed(spans):
-        lo = linha.get(col_min)
-        hi = linha.get(col_max)
-        if not (pd.isna(lo) and pd.isna(hi)):
-            return nome
-
-    return "Médio"
+    return None
 
 
 # =============================
@@ -105,9 +100,14 @@ def carregar_tabelas_taxas(caminho_csv: str = TAXAS_CSV_PATH) -> pd.DataFrame:
 
 @st.cache_data
 def carregar_atividades_anexo_i(caminho_csv: str = ATIVIDADES_CSV_PATH) -> pd.DataFrame:
-    """Carrega o ANEXO I limpo (com colunas *_MIN e *_MAX)."""
+    """Carrega o ANEXO I limpo, tratando separadores brasileiros (semicolon/comma)."""
     try:
-        df = pd.read_csv(caminho_csv, dtype=str)
+        # Tenta ler assumindo o padrão criado pelo script de limpeza (sep=';' e decimal=',')
+        df = pd.read_csv(caminho_csv, sep=';', dtype=str)
+
+        # Verificação de segurança: Se carregou tudo em 1 coluna só, tenta o separador padrão
+        if df.shape[1] < 2:
+            df = pd.read_csv(caminho_csv, sep=',', dtype=str)
 
         if "ITEM" in df.columns:
             df["ITEM"] = df["ITEM"].astype(str).str.strip()
@@ -116,9 +116,16 @@ def carregar_atividades_anexo_i(caminho_csv: str = ATIVIDADES_CSV_PATH) -> pd.Da
             if col in df.columns:
                 df[col] = df[col].astype(str).str.strip()
 
-        # Converte colunas *_MIN / *_MAX para numérico
+        # Converte colunas *_MIN / *_MAX para numérico com tratamento de vírgula
         for col in df.columns:
             if col.endswith("_MIN") or col.endswith("_MAX"):
+                # 1. Troca vírgula por ponto (para o Python entender que é decimal)
+                # 2. Converte para número
+                df[col] = (
+                    df[col]
+                    .astype(str)
+                    .str.replace(",", ".", regex=False)
+                )
                 df[col] = pd.to_numeric(df[col], errors="coerce")
 
         return df
@@ -173,7 +180,7 @@ TIPO_LICENCA_COLUNA = {
 
 # Mapeia o porte usado na interface para o porte da tabela
 MAPEAMENTO_PORTES_TABELA = {
-    "Micro": "Mínimo",
+    "Mínimo": "Mínimo",
     "Pequeno": "Pequeno",
     "Médio": "Médio",
     "Grande": "Grande",
@@ -182,7 +189,7 @@ MAPEAMENTO_PORTES_TABELA = {
 
 # Mapa inverso: porte da tabela -> porte exibido na UI
 MAPA_PORTE_TABELA_PARA_APP = {
-    "Mínimo": "Micro",
+    "Mínimo": "Mínimo",
     "Pequeno": "Pequeno",
     "Médio": "Médio",
     "Grande": "Grande",
@@ -607,7 +614,7 @@ with col1:
             min_value=0.0,
             value=0.0,
             step=1.0,
-            format="%.4f",
+            format="%.2f",
             help=f"Unidade de medida: {unidade_medida}" if unidade_medida else None,
         )
     elif tipo_medicao == "potencia":
@@ -629,8 +636,13 @@ with col1:
         )
 
     # Classifica o porte usando ANEXO I (PORTE_*_MIN/MAX)
-    porte_tabela = classificar_porte_por_linha_valor(float(valor_medida), linha_atividade)
-    porte_texto = MAPA_PORTE_TABELA_PARA_APP.get(porte_tabela, "Médio")
+    porte_encontrado = classificar_porte_por_linha_valor(float(valor_medida), linha_atividade)
+    
+    if porte_encontrado is None:
+        porte_texto = "Não Definido"
+        st.error(f"⚠️ Não foi possível determinar o porte para a medida {valor_medida}. Verifique se o valor está dentro das faixas do Anexo I.")
+    else:
+        porte_texto = MAPA_PORTE_TABELA_PARA_APP.get(porte_encontrado, porte_encontrado)
 
     # Texto amigável para o resumo lateral
     if unidade_medida:
@@ -672,6 +684,14 @@ with col2:
 st.markdown("---")
 
 if st.button("🧮 CALCULAR TAXAS", type="primary", use_container_width=True):
+    if valor_medida <= 0:
+        st.error("⚠️ Por favor, informe as medidas do seu empreendimento antes de calcular as taxas.")
+        st.stop()
+        
+    if porte_texto == "Não Definido":
+        st.error("⚠️ Impossível calcular: O porte não foi identificado para a medida informada.")
+        st.stop()
+    
     df_taxas = carregar_tabelas_taxas()
 
     st.markdown(f"""

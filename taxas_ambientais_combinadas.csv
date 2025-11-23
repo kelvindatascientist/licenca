@@ -1,0 +1,375 @@
+anexo,descricao_tabela,porte,potencial_poluidor,tlp_ufar,tli_ufar,tlo_ufar,fonte,tlp_upfs,tli_upfs,tlo_upfs
+ANEXOIIA-1–RecicladoresdeResíduos,"TabeladevaloresdaTLP,TLIeTLO.",Mínimo,Médio,2.0,3.0,4.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIIA-1–RecicladoresdeResíduos,"TabeladevaloresdaTLP,TLIeTLO.",Pequeno,Médio,2.0,3.0,6.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIIA-1–RecicladoresdeResíduos,"TabeladevaloresdaTLP,TLIeTLO.",Pequeno,Médio,3.0,4.0,8.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIIA-1–RecicladoresdeResíduos,"TabeladevaloresdaTLP,TLIeTLO.",Grande,Médio,3.0,4.0,10.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIIA-1–RecicladoresdeResíduos,"TabeladevaloresdaTLP,TLIeTLO.",Excepcional,Médio,4.0,5.0,12.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-A-AQUICULTORFAMILIAR,"TabeladevaloresdaTLP,TLIeTLO",Mínimo,Baixo,2.0,2.0,6.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-A-AQUICULTORFAMILIAR,"TabeladevaloresdaTLP,TLIeTLO",Mínimo,Alto,3.0,3.0,7.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-A-AQUICULTORFAMILIAR,"TabeladevaloresdaTLP,TLIeTLO",Pequeno,Baixo,2.0,2.0,6.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-A-AQUICULTORFAMILIAR,"TabeladevaloresdaTLP,TLIeTLO",Pequeno,Alto,4.0,4.0,8.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-A-AQUICULTORFAMILIAR,"TabeladevaloresdaTLP,TLIeTLO",Pequeno,Médio,2.0,2.0,6.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-A-AQUICULTORFAMILIAR,"TabeladevaloresdaTLP,TLIeTLO",Pequeno,Alto,5.0,5.0,5.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-A-AQUICULTORFAMILIAR,"TabeladevaloresdaTLP,TLIeTLO",Grande,Baixo,4.0,4.0,7.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-A-AQUICULTORFAMILIAR,"TabeladevaloresdaTLP,TLIeTLO",Grande,Alto,6.0,6.0,9.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-A-AQUICULTORFAMILIAR,"TabeladevaloresdaTLP,TLIeTLO",Excepcional,Baixo,6.0,6.0,9.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-A-AQUICULTORFAMILIAR,"TabeladevaloresdaTLP,TLIeTLO",Excepcional,Alto,7.0,7.0,15.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-B-AQUICULTOREMPRESARIAL,"TabeladevaloresdaTLP,TLIeTLO.",Mínimo,Baixo,4.0,4.0,6.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-B-AQUICULTOREMPRESARIAL,"TabeladevaloresdaTLP,TLIeTLO.",Mínimo,Alto,6.0,6.0,8.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-B-AQUICULTOREMPRESARIAL,"TabeladevaloresdaTLP,TLIeTLO.",Pequeno,Baixo,6.0,6.0,8.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-B-AQUICULTOREMPRESARIAL,"TabeladevaloresdaTLP,TLIeTLO.",Pequeno,Alto,8.0,8.0,10.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-B-AQUICULTOREMPRESARIAL,"TabeladevaloresdaTLP,TLIeTLO.",Pequeno,Médio,8.0,8.0,12.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-B-AQUICULTOREMPRESARIAL,"TabeladevaloresdaTLP,TLIeTLO.",Pequeno,Alto,10.0,10.0,15.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-B-AQUICULTOREMPRESARIAL,"TabeladevaloresdaTLP,TLIeTLO.",Grande,Baixo,10.0,10.0,18.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-B-AQUICULTOREMPRESARIAL,"TabeladevaloresdaTLP,TLIeTLO.",Grande,Alto,15.0,15.0,20.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-B-AQUICULTOREMPRESARIAL,"TabeladevaloresdaTLP,TLIeTLO.",Excepcional,Baixo,20.0,20.0,30.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOII-B-AQUICULTOREMPRESARIAL,"TabeladevaloresdaTLP,TLIeTLO.",Excepcional,Alto,30.0,30.0,40.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM1.1doANEXOI.",Mínimo,Médio,12.0,12.0,12.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM1.1doANEXOI.",Pequeno,Médio,17.0,17.0,17.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM1.1doANEXOI.",Pequeno,Médio,23.0,23.0,23.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM1.1doANEXOI.",Grande,Médio,29.0,29.0,29.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM1.1doANEXOI.",Excepcional,Médio,34.0,34.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS2e3doANEXOI(excetoITEM3.9).",Mínimo,Alto,23.0,46.0,171.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS2e3doANEXOI(excetoITEM3.9).",Pequeno,Alto,34.0,91.0,274.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS2e3doANEXOI(excetoITEM3.9).",Pequeno,Médio,46.0,125.0,399.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS2e3doANEXOI(excetoITEM3.9).",Grande,Alto,57.0,171.0,513.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS2e3doANEXOI(excetoITEM3.9).",Excepcional,Alto,68.0,205.0,627.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM3.10doANEXOI",Mínimo,Alto,6.0,6.0,12.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM3.10doANEXOI",Pequeno,Alto,6.0,8.0,14.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM3.10doANEXOI",Pequeno,Médio,6.0,12.0,17.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM3.10doANEXOI",Grande,Alto,6.0,17.0,23.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM3.10doANEXOI",Excepcional,Alto,6.0,23.0,28.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOVI,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem4doANEXOI(excetoitens4.1,4.2,4.4e4.7)",Mínimo,Alto,23.0,34.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOVI,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem4doANEXOI(excetoitens4.1,4.2,4.4e4.7)",Pequeno,Alto,34.0,68.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOVI,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem4doANEXOI(excetoitens4.1,4.2,4.4e4.7)",Pequeno,Médio,46.0,103.0,103.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOVI,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem4doANEXOI(excetoitens4.1,4.2,4.4e4.7)",Grande,Alto,57.0,114.0,137.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOVI,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem4doANEXOI(excetoitens4.1,4.2,4.4e4.7)",Excepcional,Alto,68.0,137.0,171.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOVII,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem4.1doANEXOI",-,Alto,12.0,17.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOVIII,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnositens4.2,4.4,4.7DOANEXOI",Mínimo,Alto,17.0,28.0,28.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOVIII,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnositens4.2,4.4,4.7DOANEXOI",Pequeno,Alto,29.0,57.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOVIII,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnositens4.2,4.4,4.7DOANEXOI",Pequeno,Médio,40.0,80.0,80.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOVIII,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnositens4.2,4.4,4.7DOANEXOI",Grande,Alto,46.0,91.0,114.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOVIII,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnositens4.2,4.4,4.7DOANEXOI",Excepcional,Alto,57.0,114.0,137.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIX,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.1DOANEXOI",Mínimo,Alto,34.0,40.0,46.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIX,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.1DOANEXOI",Pequeno,Alto,40.0,46.0,51.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIX,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.1DOANEXOI",Pequeno,Médio,46.0,51.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIX,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.1DOANEXOI",Grande,Alto,51.0,57.0,63.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOIX,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.1DOANEXOI",Excepcional,Alto,68.0,91.0,103.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOX,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.2E5.4DOANEXOI",Mínimo,Alto,34.0,68.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOX,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.2E5.4DOANEXOI",Pequeno,Alto,46.0,103.0,103.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOX,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.2E5.4DOANEXOI",Pequeno,Médio,57.0,114.0,137.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOX,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.2E5.4DOANEXOI",Grande,Alto,68.0,137.0,171.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOX,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.2E5.4DOANEXOI",Excepcional,Alto,106.0,171.0,205.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXI,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.3DOANEXOI",Mínimo,Alto,28.0,34.0,40.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXI,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.3DOANEXOI",Pequeno,Alto,34.0,40.0,46.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXI,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.3DOANEXOI",Pequeno,Médio,40.0,46.0,51.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXI,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.3DOANEXOI",Grande,Alto,46.0,57.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXI,"TabeladevaloresdaTLP,TLIETLOdasatividadeseempreendimentosdescritosnoitem5.3DOANEXOI",Excepcional,Alto,57.0,68.0,91.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM6.1doANEXOI.",Mínimo,Alto,11.0,40.0,51.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM6.1doANEXOI.",Pequeno,Alto,11.0,57.0,91.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM6.1doANEXOI.",Pequeno,Médio,11.0,137.0,251.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM6.1doANEXOI.",Grande,Alto,11.0,228.0,342.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM6.1doANEXOI.",Excepcional,Alto,12.0,342.0,456.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Mínimo,Baixo,7.0,7.0,14.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Mínimo,Médio,8.0,8.0,16.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Mínimo,Alto,9.0,11.0,22.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Pequeno,Baixo,7.0,9.0,18.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Pequeno,Médio,9.0,12.0,23.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Pequeno,Alto,11.0,15.0,26.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Pequeno,Médio,11.0,14.0,23.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Pequeno,Médio,12.0,16.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Pequeno,Alto,13.0,17.0,38.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Grande,Baixo,13.0,28.0,46.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Grande,Médio,14.0,32.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Grande,Alto,15.0,34.0,76.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Excepcional,Baixo,15.0,56.0,92.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Excepcional,Médio,16.0,64.0,136.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens6,7,8,10,11,12e13doANEXOI(comexceçãodoitem6.1)",Excepcional,Alto,17.0,68.0,152.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM9doANEXOI",Mínimo,Médio,7.0,7.0,14.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM9doANEXOI",Mínimo,Alto,7.0,14.0,28.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM9doANEXOI",Pequeno,Médio,7.0,9.0,16.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM9doANEXOI",Pequeno,Alto,11.0,28.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM9doANEXOI",Pequeno,Médio,9.0,9.0,18.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM9doANEXOI",Pequeno,Alto,12.0,40.0,114.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM9doANEXOI",Grande,Médio,9.0,12.0,23.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM9doANEXOI",Grande,Alto,12.0,68.0,171.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM9doANEXOI",Excepcional,Médio,11.0,16.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM9doANEXOI",Excepcional,Alto,12.0,103.0,285.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM14doANEXOI",Mínimo,Alto,12.0,23.0,46.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM14doANEXOI",Pequeno,Alto,12.0,29.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM14doANEXOI",Pequeno,Médio,12.0,40.0,114.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM14doANEXOI",Grande,Alto,12.0,68.0,171.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM14doANEXOI",Excepcional,Alto,12.0,103.0,285.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVI,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM15doANEXOI.",Mínimo,Alto,12.0,14.0,14.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVI,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM15doANEXOI.",Pequeno,Alto,17.0,29.0,46.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVI,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM15doANEXOI.",Pequeno,Médio,23.0,57.0,171.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVI,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM15doANEXOI.",Grande,Alto,34.0,114.0,342.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVI,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM15doANEXOI.",Excepcional,Alto,46.0,228.0,456.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Mínimo,Baixo,6.0,6.0,6.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Mínimo,Médio,11.0,11.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Mínimo,Alto,11.0,46.0,91.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Pequeno,Baixo,9.0,9.0,21.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Pequeno,Médio,11.0,23.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Pequeno,Alto,12.0,68.0,137.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Pequeno,Médio,12.0,29.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Pequeno,Médio,12.0,52.0,138.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Pequeno,Alto,12.0,92.0,194.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Grande,Baixo,12.0,40.0,114.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Grande,Médio,12.0,68.0,206.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Grande,Alto,12.0,114.0,262.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Excepcional,Baixo,12.0,63.0,171.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Excepcional,Médio,12.0,115.0,273.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM18doANEXOI",Excepcional,Alto,12.0,172.0,342.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM19doANEXOI.",Mínimo,Médio,2.0,6.0,9.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM19doANEXOI.",Pequeno,Médio,6.0,8.0,17.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM19doANEXOI.",Pequeno,Médio,11.0,17.0,46.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM19doANEXOI.",Grande,Médio,11.0,23.0,69.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXVIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITEM19doANEXOI.",Excepcional,Médio,11.0,29.0,114.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Mínimo,Baixo,9.0,9.0,9.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Mínimo,Médio,11.0,11.0,11.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Mínimo,Alto,14.0,14.0,23.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Pequeno,Baixo,12.0,12.0,18.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Pequeno,Médio,12.0,16.0,16.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Pequeno,Alto,34.0,34.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Pequeno,Médio,46.0,46.0,46.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Pequeno,Médio,11.0,34.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Pequeno,Alto,148.0,148.0,456.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Grande,Baixo,142.0,142.0,142.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Grande,Médio,12.0,91.0,148.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Grande,Alto,433.0,433.0,1037.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Excepcional,Baixo,319.0,319.0,319.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Excepcional,Médio,11.0,137.0,262.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXIX,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnosITENS71,72,73e74doANEXOI",Excepcional,Alto,798.0,798.0,1596.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM76.1doANEXOI",Mínimo,Alto,22.0,57.0,114.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM76.1doANEXOI",Pequeno,Alto,23.0,114.0,171.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM76.1doANEXOI",Pequeno,Médio,23.0,171.0,228.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM76.1doANEXOI",Grande,Alto,23.0,228.0,285.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM76.1doANEXOI",Excepcional,Alto,23.0,285.0,342.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXI,"TabeladevaloresdaTLP,TLIeTLOdosempreendimentosdescritosnosITENS76.2a76.4doANEXOI",Mínimo,Médio,6.0,6.0,6.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXI,"TabeladevaloresdaTLP,TLIeTLOdosempreendimentosdescritosnosITENS76.2a76.4doANEXOI",Pequeno,Médio,11.0,11.0,11.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXI,"TabeladevaloresdaTLP,TLIeTLOdosempreendimentosdescritosnosITENS76.2a76.4doANEXOI",Pequeno,Médio,17.0,17.0,17.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXI,"TabeladevaloresdaTLP,TLIeTLOdosempreendimentosdescritosnosITENS76.2a76.4doANEXOI",Grande,Médio,34.0,34.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXI,"TabeladevaloresdaTLP,TLIeTLOdosempreendimentosdescritosnosITENS76.2a76.4doANEXOI",Excepcional,Médio,57.0,57.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM76.5doANEXOI",Mínimo,Médio,57.0,57.0,80.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM76.5doANEXOI",Pequeno,Médio,80.0,80.0,136.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM76.5doANEXOI",Pequeno,Médio,114.0,114.0,228.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM76.5doANEXOI",Grande,Médio,171.0,171.0,319.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM76.5doANEXOI",Excepcional,Médio,228.0,228.0,433.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM76.6e76.7doANEXOI",Mínimo,Alto,34.0,143.0,308.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM76.6e76.7doANEXOI",Pequeno,Alto,57.0,182.0,433.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM76.6e76.7doANEXOI",Pequeno,Médio,68.0,319.0,707.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM76.6e76.7doANEXOI",Grande,Alto,91.0,456.0,1140.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXIII,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnoITEM76.6e76.7doANEXOI",Excepcional,Alto,142.0,570.0,1710.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXIV,"TabeladevaloresdaTLP,TLIeTLOdosempreendimentosdescritosnoITEMN.76.8doANEXOI",Pequeno,Alto,68.0,182.0,182.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXIV,"TabeladevaloresdaTLP,TLIeTLOdosempreendimentosdescritosnoITEMN.76.8doANEXOI",Pequeno,Médio,114.0,319.0,433.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXIV,"TabeladevaloresdaTLP,TLIeTLOdosempreendimentosdescritosnoITEMN.76.8doANEXOI",Grande,Alto,171.0,433.0,1254.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXIV,"TabeladevaloresdaTLP,TLIeTLOdosempreendimentosdescritosnoITEMN.76.8doANEXOI",Excepcional,Alto,251.0,798.0,1711.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens76.9a76.13doANEXOI",Mínimo,Médio,12.0,23.0,46.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens76.9a76.13doANEXOI",Mínimo,Alto,12.0,34.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens76.9a76.13doANEXOI",Pequeno,Médio,12.0,34.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens76.9a76.13doANEXOI",Pequeno,Alto,12.0,68.0,114.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens76.9a76.13doANEXOI",Pequeno,Médio,12.0,46.0,80.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens76.9a76.13doANEXOI",Pequeno,Alto,12.0,103.0,148.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens76.9a76.13doANEXOI",Grande,Médio,12.0,68.0,102.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens76.9a76.13doANEXOI",Grande,Alto,12.0,137.0,171.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens76.9a76.13doANEXOI",Excepcional,Médio,12.0,114.0,137.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXV,"TabeladevaloresdaTLP,TLIeTLOdasatividadeseempreendimentosdescritosnositens76.9a76.13doANEXOI",Excepcional,Alto,12.0,171.0,205.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnoITEMN.76.14doANEXOI",Mínimo,Alto,2.0,2.0,2.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnoITEMN.76.14doANEXOI",Pequeno,Alto,5.0,5.0,5.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnoITEMN.76.14doANEXOI",Pequeno,Médio,7.0,7.0,7.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnoITEMN.76.14doANEXOI",Grande,Alto,9.0,9.0,9.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnoITEMN.76.14doANEXOI",Excepcional,Alto,11.0,11.0,11.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Mínimo,Baixo,6.0,6.0,6.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Mínimo,Médio,11.0,11.0,28.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Mínimo,Alto,12.0,17.0,46.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Pequeno,Baixo,9.0,9.0,9.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Pequeno,Médio,12.0,17.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Pequeno,Alto,11.0,34.0,69.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Pequeno,Médio,12.0,28.0,28.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Pequeno,Médio,12.0,28.0,45.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Pequeno,Alto,12.0,51.0,102.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Grande,Baixo,12.0,40.0,40.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Grande,Médio,12.0,40.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Grande,Alto,12.0,68.0,137.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Excepcional,Baixo,12.0,63.0,63.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Excepcional,Médio,12.0,51.0,114.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritosnosITENSN.76.15a76.19doANEXOI",Excepcional,Alto,12.0,103.0,160.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM79doANEXOI",Mínimo,Alto,91.0,142.0,342.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM79doANEXOI",Pequeno,Alto,114.0,182.0,456.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM79doANEXOI",Pequeno,Médio,137.0,251.0,684.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM79doANEXOI",Grande,Alto,171.0,433.0,798.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM79doANEXOI",Excepcional,Alto,205.0,490.0,1140.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXIII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM79.1doANEXOI",-,Alto,34.0,114.0,171.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM79.7doANEXO",Mínimo,Alto,17.0,40.0,73.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM79.7doANEXO",Pequeno,Alto,23.0,80.0,91.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM79.7doANEXO",Pequeno,Médio,34.0,200.0,274.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM79.7doANEXO",Grande,Alto,46.0,239.0,319.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXVII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM79.7doANEXO",Excepcional,Alto,57.0,319.0,365.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXIX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.7,81.8,81.11,81.12e81.13doANEXOI",Mínimo,Médio,11.0,29.0,74.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXIX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.7,81.8,81.11,81.12e81.13doANEXOI",Mínimo,Alto,11.0,28.0,80.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXIX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.7,81.8,81.11,81.12e81.13doANEXOI",Pequeno,Médio,11.0,45.0,108.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXIX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.7,81.8,81.11,81.12e81.13doANEXOI",Pequeno,Alto,17.0,51.0,120.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXIX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.7,81.8,81.11,81.12e81.13doANEXOI",Pequeno,Médio,11.0,57.0,142.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXIX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.7,81.8,81.11,81.12e81.13doANEXOI",Pequeno,Alto,40.0,80.0,182.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXIX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.7,81.8,81.11,81.12e81.13doANEXOI",Grande,Médio,11.0,102.0,228.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXIX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.7,81.8,81.11,81.12e81.13doANEXOI",Grande,Alto,114.0,182.0,433.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXIX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.7,81.8,81.11,81.12e81.13doANEXOI",Excepcional,Médio,11.0,119.0,296.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXXXIX,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.7,81.8,81.11,81.12e81.13doANEXOI",Excepcional,Alto,171.0,307.0,707.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXL,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.9doANEXOI",Mínimo,Médio,6.0,6.0,11.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXL,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.9doANEXOI",Pequeno,Médio,6.0,11.0,17.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXL,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.9doANEXOI",Pequeno,Médio,11.0,17.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXL,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.9doANEXOI",Grande,Médio,11.0,34.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXL,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.9doANEXOI",Excepcional,Médio,11.0,46.0,114.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.10doANEXOI",Mínimo,Médio,11.0,46.0,114.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.10doANEXOI",Pequeno,Médio,11.0,57.0,148.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.10doANEXOI",Pequeno,Médio,11.0,68.0,182.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.10doANEXOI",Grande,Médio,11.0,80.0,217.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoitem81.10doANEXOI",Excepcional,Médio,11.0,91.0,251.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM85doANEXOI.",Mínimo,Médio,23.0,46.0,171.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM85doANEXOI.",Pequeno,Médio,46.0,68.0,228.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM85doANEXOI.",Pequeno,Médio,68.0,91.0,342.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM85doANEXOI.",Grande,Médio,91.0,114.0,456.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM85doANEXOI.",Excepcional,Médio,114.0,171.0,570.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM86doANEXOI",Mínimo,Baixo,1.0,1.0,1.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM86doANEXOI",Mínimo,Médio,1.0,1.0,1.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM86doANEXOI",Pequeno,Baixo,1.0,1.0,1.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM86doANEXOI",Pequeno,Médio,1.0,1.0,1.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM86doANEXOI",Pequeno,Médio,1.0,1.0,2.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM86doANEXOI",Pequeno,Médio,11.0,11.0,23.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM86doANEXOI",Grande,Baixo,34.0,34.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM86doANEXOI",Grande,Médio,57.0,57.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM86doANEXOI",Excepcional,Baixo,68.0,68.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIII,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM86doANEXOI",Excepcional,Médio,102.0,102.0,102.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM87doANEXOI",Mínimo,Médio,6.0,6.0,6.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM87doANEXOI",Mínimo,Alto,11.0,11.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM87doANEXOI",Pequeno,Médio,6.0,11.0,23.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM87doANEXOI",Pequeno,Alto,11.0,22.0,46.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM87doANEXOI",Pequeno,Médio,6.0,23.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM87doANEXOI",Pequeno,Alto,11.0,34.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM87doANEXOI",Grande,Médio,6.0,34.0,44.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM87doANEXOI",Grande,Alto,11.0,45.0,68.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM87doANEXOI",Excepcional,Médio,6.0,45.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLIV,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM87doANEXOI",Excepcional,Alto,11.0,57.0,80.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLVI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM90.2doANEXOI",Mínimo,Baixo,6.0,9.0,11.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLVI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM90.2doANEXOI",Pequeno,Baixo,11.0,17.0,34.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLVI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM90.2doANEXOI",Pequeno,Médio,11.0,23.0,57.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLVI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM90.2doANEXOI",Grande,Baixo,11.0,28.0,80.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXOXLVI,"TabeladevaloresdaTLP,TLIeTLOdoempreendimentodescritonoITEM90.2doANEXOI",Excepcional,Baixo,17.0,46.0,114.0,Ariquemes Lei 2.349/2019 (Anexos),,,
+ANEXO III,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 1. 1",Mínimo,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,10.0,10.0
+ANEXO III,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 1. 1",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),15.0,15.0,15.0
+ANEXO III,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 1. 1",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),20.0,20.0,20.0
+ANEXO III,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 1. 1",Grande,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),25.0,25.0,25.0
+ANEXO III,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 1. 1",Excepcional,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),30.0,30.0,30.0
+ANEXO VII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 4.1 do ANEXO I",-,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,15.0,50.0
+ANEXO VII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 4.1 do ANEXO I",Mínimo,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),20.0,30.0,30.0
+ANEXO VII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 4.1 do ANEXO I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),30.0,60.0,60.0
+ANEXO VII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 4.1 do ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),40.0,90.0,90.0
+ANEXO VII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 4.1 do ANEXO I",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),50.0,100.0,120.0
+ANEXO VII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 4.1 do ANEXO I",Excepcional,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),60.0,120.0,150.0
+ANEXO VIII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos nos itens 4.2, 4.4, 4 .7 DO ANEXO I",Mínimo,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),15.0,25.0,25.0
+ANEXO VIII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos nos itens 4.2, 4.4, 4 .7 DO ANEXO I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),25.0,50.0,50.0
+ANEXO VIII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos nos itens 4.2, 4.4, 4 .7 DO ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),35.0,70.0,70.0
+ANEXO VIII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos nos itens 4.2, 4.4, 4 .7 DO ANEXO I",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),40.0,80.0,100.0
+ANEXO VIII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos nos itens 4.2, 4.4, 4 .7 DO ANEXO I",Excepcional,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),50.0,100.0,120.0
+ANEXO IX,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.1 DO A NEXO I",Mínimo,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),30.0,35.0,40.0
+ANEXO IX,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.1 DO A NEXO I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),35.0,40.0,45.0
+ANEXO IX,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.1 DO A NEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),40.0,45.0,50.0
+ANEXO IX,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.1 DO A NEXO I",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),45.0,50.0,55.0
+ANEXO IX,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.1 DO A NEXO I",Excepcional,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),60.0,80.0,90.0
+ANEXO X,"Tabela de valores da TLP, TLI E TLO d as atividades e empreendimentos descritos no item 5.2 E 5.4 DO ANEXO I",Mínimo,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),30.0,60.0,60.0
+ANEXO X,"Tabela de valores da TLP, TLI E TLO d as atividades e empreendimentos descritos no item 5.2 E 5.4 DO ANEXO I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),40.0,90.0,90.0
+ANEXO X,"Tabela de valores da TLP, TLI E TLO d as atividades e empreendimentos descritos no item 5.2 E 5.4 DO ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),50.0,100.0,120.0
+ANEXO X,"Tabela de valores da TLP, TLI E TLO d as atividades e empreendimentos descritos no item 5.2 E 5.4 DO ANEXO I",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),60.0,120.0,150.0
+ANEXO X,"Tabela de valores da TLP, TLI E TLO d as atividades e empreendimentos descritos no item 5.2 E 5.4 DO ANEXO I",Excepcional,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),90.0,150.0,180.0
+ANEXO XI,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.3 DO ANEXO I",Mínimo,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),25.0,30.0,35.0
+ANEXO XI,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.3 DO ANEXO I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),30.0,35.0,40.0
+ANEXO XI,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.3 DO ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),35.0,40.0,45.0
+ANEXO XI,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.3 DO ANEXO I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),40.0,50.0,60.0
+ANEXO XI,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.3 DO ANEXO I",Excepcional,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),50.0,60.0,80.0
+ANEXO XI,"Tabela de valores da TLP, TLI e TLO  das atividades e empreendim entos descritos nos ITEM  6.1 do",-,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,35.0,45.0
+ANEXO XI,"Tabela de valores da TLP, TLI e TLO  das atividades e empreendim entos descritos nos ITEM  6.1 do",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,50.0,80.0
+ANEXO XI,"Tabela de valores da TLP, TLI e TLO  das atividades e empreendim entos descritos nos ITEM  6.1 do",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,120.0,220.0
+ANEXO XI,"Tabela de valores da TLP, TLI e TLO  das atividades e empreendim entos descritos nos ITEM  6.1 do",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,200.0,300.0
+ANEXO XV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no",-,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,20.0,40.0
+ANEXO XV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,25.0,60.0
+ANEXO XV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,35.0,100.0
+ANEXO XV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,60.0,150.0
+ANEXO XV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no",Excepcional,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,90.0,250.0
+ANEXO XVI,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos",Mínimo,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,12.0,12.0
+ANEXO XVI,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),15.0,25.0,40.0
+ANEXO XVI,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),20.0,50.0,150.0
+ANEXO XVI,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),30.0,100.0,300.0
+ANEXO  XVII,"Tabela de valores da TLP, TLI e TLO das atividades e em preendim entos descritos no ITEM  18 do ANEXO I",Médio,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,40.0,80.0
+ANEXO  XVII,"Tabela de valores da TLP, TLI e TLO das atividades e em preendim entos descritos no ITEM  18 do ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,20.0,60.0
+ANEXO  XVII,"Tabela de valores da TLP, TLI e TLO das atividades e em preendim entos descritos no ITEM  18 do ANEXO I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,60.0,120.0
+ANEXO  XVII,"Tabela de valores da TLP, TLI e TLO das atividades e em preendim entos descritos no ITEM  18 do ANEXO I",Pequeno,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,25.0,50.0
+ANEXO  XVII,"Tabela de valores da TLP, TLI e TLO das atividades e em preendim entos descritos no ITEM  18 do ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,45.0,120.0
+ANEXO  XVII,"Tabela de valores da TLP, TLI e TLO das atividades e em preendim entos descritos no ITEM  18 do ANEXO I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,80.0,170.0
+ANEXO  XVII,"Tabela de valores da TLP, TLI e TLO das atividades e em preendim entos descritos no ITEM  18 do ANEXO I",Grande,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,35.0,100.0
+ANEXO  XVII,"Tabela de valores da TLP, TLI e TLO das atividades e em preendim entos descritos no ITEM  18 do ANEXO I",Grande,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,60.0,180.0
+ANEXO  XVII,"Tabela de valores da TLP, TLI e TLO das atividades e em preendim entos descritos no ITEM  18 do ANEXO I",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,100.0,230.0
+ANEXO  XVII,"Tabela de valores da TLP, TLI e TLO das atividades e em preendim entos descritos no ITEM  18 do ANEXO I",Excepcional,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,150.0,300.0
+ANEXO XVIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 19 do ANEXO I.",Mínimo,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),2.0,5.0,8.0
+ANEXO XVIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 19 do ANEXO I.",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),5.0,7.0,15.0
+ANEXO XVIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 19 do ANEXO I.",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,15.0,40.0
+ANEXO XVIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 19 do ANEXO I.",Grande,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,20.0,60.0
+ANEXO XVIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 19 do ANEXO I.",Excepcional,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,25.0,100.0
+ANEXO XXI,"Tabela de valores da TLP, TLI e  TLO dos empreendimentos descritos nos",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,10.0,10.0
+ANEXO XXI,"Tabela de valores da TLP, TLI e  TLO dos empreendimentos descritos nos",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),15.0,15.0,15.0
+ANEXO XXI,"Tabela de valores da TLP, TLI e  TLO dos empreendimentos descritos nos",Grande,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),30.0,30.0,30.0
+ANEXO XXI,"Tabela de valores da TLP, TLI e  TLO dos empreendimentos descritos nos",Grande,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),50.0,50.0,50.0
+ANEXO  XXIV,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos no ITEM N. 76.8 do ANEXO I",Mínimo,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),30.0,125.0,125.0
+ANEXO  XXIV,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos no ITEM N. 76.8 do ANEXO I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),60.0,160.0,160.0
+ANEXO  XXIV,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos no ITEM N. 76.8 do ANEXO I",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),150.0,380.0,1100.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Mínimo,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),5.0,5.0,5.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Mínimo,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,10.0,25.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Mínimo,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,15.0,40.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Pequeno,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),8.0,8.0,8.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,15.0,30.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,30.0,60.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,25.0,25.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,25.0,40.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,45.0,90.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Grande,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,35.0,35.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Grande,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,35.0,50.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,60.0,120.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Excepcional,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,55.0,55.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Excepcional,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,45.0,100.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos",Excepcional,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,90.0,140.0
+ANEXO XXVIII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 77.1  do ANEXO I",-,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),100.0,100.0,120.0
+ANEXO XXXII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 79  do ANEXO I",Mínimo,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),80.0,125.0,300.0
+ANEXO  XXXVIII,"Tabela de valores da TLP, TLI e TLO  do empreendimento descrito no ITEM  79.11 do ANEXO  I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),30.0,40.0,1.0
+ANEXO  XXXVIII,"Tabela de valores da TLP, TLI e TLO  do empreendimento descrito no ITEM  79.11 do ANEXO  I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),40.0,50.0,1.0
+ANEXO  XXXVIII,"Tabela de valores da TLP, TLI e TLO  do empreendimento descrito no ITEM  79.11 do ANEXO  I",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),50.0,60.0,1.0
+ANEXO  XXXVIII,"Tabela de valores da TLP, TLI e TLO  do empreendimento descrito no ITEM  79.11 do ANEXO  I",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),60.0,70.0,1.0
+ANEXO XXXIX,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito",Médio,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),15.0,45.0,45.0
+ANEXO XXXIX,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),30.0,60.0,75.0
+ANEXO XXXIX,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),45.0,100.0,120.0
+ANEXO XXXIX,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),100.0,160.0,380.0
+ANEXO XXXIX,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),150.0,270.0,620.0
+ANEXO XL,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no ite m 81.9  do ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),5.0,10.0,15.0
+ANEXO XL,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no ite m 81.9  do ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,15.0,30.0
+ANEXO XL,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no ite m 81.9  do ANEXO I",Grande,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,30.0,60.0
+ANEXO XL,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no ite m 81.9  do ANEXO I",Grande,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,40.0,100.0
+ANEXO XLI,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no item 81.10  do ANEXO I",Mínimo,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,40.0,100.0
+ANEXO XLI,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no item 81.10  do ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,50.0,130.0
+ANEXO XLI,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no item 81.10  do ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,60.0,160.0
+ANEXO XLI,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no item 81.10  do ANEXO I",Grande,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,70.0,190.0
+ANEXO XLI,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no item 81.10  do ANEXO I",Grande,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,80.0,220.0
+ANEXO XLII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 85 do ANEXO I",Mínimo,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),20.0,40.0,150.0
+ANEXO  XLIII,"Tabela de valores da TLP, TLI e TLO  do em preendim ento descrito no ITEM  86 do ANEXO  I",Pequeno,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),30.0,30.0,30.0
+ANEXO  XLIII,"Tabela de valores da TLP, TLI e TLO  do em preendim ento descrito no ITEM  86 do ANEXO  I",Excepcional,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),60.0,60.0,60.0
+ANEXO XLIV,"Tabela de valores da TLP, TLI e  TLO do em preendimento descrito no ITEM  87 do ANEXO I",Médio,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,10.0,30.0
+ANEXO XLIV,"Tabela de valores da TLP, TLI e  TLO do em preendimento descrito no ITEM  87 do ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),5.0,10.0,20.0
+ANEXO XLIV,"Tabela de valores da TLP, TLI e  TLO do em preendimento descrito no ITEM  87 do ANEXO I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,20.0,40.0
+ANEXO XLIV,"Tabela de valores da TLP, TLI e  TLO do em preendimento descrito no ITEM  87 do ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),5.0,20.0,30.0
+ANEXO XLIV,"Tabela de valores da TLP, TLI e  TLO do em preendimento descrito no ITEM  87 do ANEXO I",Pequeno,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,30.0,50.0
+ANEXO XLIV,"Tabela de valores da TLP, TLI e  TLO do em preendimento descrito no ITEM  87 do ANEXO I",Grande,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),5.0,30.0,40.0
+ANEXO XLIV,"Tabela de valores da TLP, TLI e  TLO do em preendimento descrito no ITEM  87 do ANEXO I",Grande,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,40.0,60.0
+ANEXO XLIV,"Tabela de valores da TLP, TLI e  TLO do em preendimento descrito no ITEM  87 do ANEXO I",Excepcional,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),5.0,40.0,50.0
+ANEXO XLIV,"Tabela de valores da TLP, TLI e  TLO do em preendimento descrito no ITEM  87 do ANEXO I",Excepcional,Alto,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,50.0,70.0
+ANEXO XLVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90.2 do ANEXO I",Mínimo,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),5.0,8.0,10.0
+ANEXO XLVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90.2 do ANEXO I",Pequeno,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,15.0,30.0
+ANEXO XLVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90.2 do ANEXO I",Pequeno,Médio,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,20.0,50.0
+ANEXO XLVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90.2 do ANEXO I",Grande,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),10.0,25.0,70.0
+ANEXO XLVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90.2 do ANEXO I",Excepcional,Baixo,,,,Estado RO Lei 3.941/2016 (SEDAM),15.0,40.0,100.0

@@ -1,0 +1,29 @@
+ITEM,Atividade,UNIDADE_DE_MEDIDA,PORTE_MINIMO,PORTE_PEQUENO,PORTE_MEDIO,PORTE_GRANDE,PORTE_EXCEPCIONAL,POTENCIAL_POLUIDOR,ANEXO_OU_TAXA
+1,PESQUISA MINERAL,,,,,,,,
+1.1,Pesquisa mineral com guia,área total requerida ao DNPM em hectares (ha),até2,"de2,0001até 10","de 10,0001 até30","de 30,0001 até60",acimade60,MÉDIO,ANEXO III
+2,"EXTRAÇÃO E/OU BENEFICIAMENTO DE CARVÃO MINERAL, PETRÓLEO E GÁS NATURAL",,,,,,,,
+2.1,Extração e/ou beneficiamento de carvão mineral,Concessão do Ministério de Minas e Energia em hectares (ha),Até25,"de 25,0001 até50","de 50,0001 até100","de 100,0001 até500",acimade500,ALTO,ANEXO IV
+2.2,Extração de petróleo e gás natural,Concessão do Ministério de Minas e Energia em hectares (ha),Até25,"de 25,0001 até50","de 50,0001 até100","de 100,0001 até500",acimade500,ALTO,ANEXO IV
+2.3,Extração e/ou beneficiamento de xisto,Concessão do Ministério de Minas e Energia em hectares (ha),Até25,"de 25,0001 até50","de 50,0001 até100","de 100,0001 até500",acimade500,ALTO,ANEXO IV
+2.4,Extração e/ou beneficiamento de areias betuminosas,Concessão do Ministério de Minas e Energia em hectares (ha),Até25,"de 25,0001 até50","de 50,0001 até100","de 100,0001 até500",acimade500,ALTO,ANEXO IV
+3,EXTRAÇÃO E/OU BENEFICIAMENTO DE MINERAIS METÁLICOS,,,,,,,,
+3.1,Extração e/ou beneficiamento de minério de ferro – fora de recursos hídricos,área útil em hectares (ha),até1,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO IV
+3.2,Extração e/ou beneficiamento de minério de alumínio – fora de recursos hídricos,área útil em hectares (ha),até1,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO IV
+3.3,Extração e/ou beneficiamento de minério de estanho – fora de recursos hídricos,área útil em hectares (ha),até1,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO IV
+3.4,Extração e/ou beneficiamento de minério de manganês – fora de recursos hídricos,área útil em hectares (ha),até1,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO IV
+3.5,Extração de minérios de metais preciosos – fora de recursos hídricos,área útil em hectares (ha),até1,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO IV
+3.6,"Extração de minérios de cassiterita, ouro, wolframita e minerais – fora de recursos hídricos",área útil em hectares (ha),até1,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO IV
+3.7,"Extração e/ou beneficiamento de cobre, chumbo, zinco e de outros minerais metálicos não-ferrosos – fora de recursos hídricos",área útil em hectares (ha),até1,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO IV
+3.8,Extração e/ou beneficiamento de outros minerais metálicos não especificados – fora de recursos hídricos,área útil em hectares (ha),até1,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO IV
+3.9,Dragas e balsas com bombas de sucção,número de polegadas da bomba de sucção por equipamento,até4,de5a6,de7a12,de13a14,acimade15,ALTO,----
+3.10,Extração de ouro em leito de rio,área total requerida ao DNPM em hectares (ha),Até50,"de 50,01 a 100","de100,01a 250","de250,01 a 500",acimade500,ALTO,ANEXO V
+4,EXTRAÇÃO E/OU BENEFICIAMENTO DE MINERAIS NÃO-METÁLICOS,,,,,,,,
+4.1,"Extração de areia, cascalho ou pedregulho - em recursos hídricos",nºembarcações,1 até 99999999,-,-,-,-,ALTO,ANEXO VII
+4.2,"Extração e/ou beneficiamento de areia, silte, argila ou caulim, cascalho ou pedregulho e saibro destinados à construção civil e/ou indústria cerâmica",área útil em hectares (ha),até2,"de2,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO VIII
+4.3,"Extração e/ou beneficiamento de areia, silte, argila ou caulim, cascalho ou pedregulho e saibro não destinados à construção civil e/ou indústria cerâmica",área útil em hectares (ha),até2,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO VI
+4.4,"Extração e/ou beneficiamento de granito, gnaisse, basalto, mármore, diabásio e outros tipos rochosos destinados à construção civil",área útil em hectares (ha),até2,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO VIII
+4.5,"Extração e/ou beneficiamento de granito, gnaisse, basalto, mármore, diabásio e outros tipos rochosos não destinados à construção civil",área útil em hectares (ha),até2,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO VI
+4.6,"Extração e/ou beneficiamento de calcário/dolomita, gipsita e outras rochas e minerais associadas à indústria diversa",área útil em hectares (ha),até2,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO VI
+4.7,"Extração e/ou beneficiamento de calcário/dolomita, gipstita e outras rochas e minerais associadas para uso na fabricação de adubos, fertilizantes e produtos químicos",área útil em hectares (ha),até2,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO VIII
+4.8,Extração de outros minerais não-metálicos não especificados para uso diverso,área útil em hectares (ha),até2,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO VI
+4.9,"Extração e/ou beneficiamento de ardósia, filito ou xisto para uso diversos",área útil em hectares (ha),até2,"de1,0001até 5","de5,0001até 10","de 10,0001 até20",acimade20,ALTO,ANEXO VI

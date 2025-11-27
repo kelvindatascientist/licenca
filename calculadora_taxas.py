@@ -292,6 +292,11 @@ st.markdown("""
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(45, 139, 107, 0.3);
     }
+
+    #MainMenu {visibility: hidden;}
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
+    .stDeployButton {display:none;}
     
     h3 {
         color: #1e6b52;
@@ -761,6 +766,9 @@ if st.button("🧮 CALCULAR TAXAS", type="primary", use_container_width=True):
             <p style="font-size: 0.9rem; color: #666; margin-top: 1rem;">
                 <strong>Observação:</strong> Normalmente, as licenças são solicitadas em sequência (LP → LI → LO), 
                 não todas de uma vez. Este é um valor aproximado baseado nas tabelas oficiais da lei municipal.
+            </p>
+            <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                <strong>As taxas ambientais podem ser parceladas em até 6 vezes no boleto.</strong>
             </p>
         </div>
     """, unsafe_allow_html=True)

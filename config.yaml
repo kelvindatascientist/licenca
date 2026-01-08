@@ -1,0 +1,20 @@
+credentials:
+  usernames:
+    admin:
+      email: admin@example.com
+      failed_login_attempts: 0
+      logged_in: False
+      name: Admin User
+      password: $2b$12$g9BFhW6HQXX1FHlGRR7YhO9OPU9dXXWFClXm8dfw.3X2Jg2eUxjmW
+    kelvin:
+      email: kelvinpac@gmail.com
+      name: Kelvin Pacheco
+      password: $2b$12$w5psIiNGLg6fW8pv.Lv/Ge.aRhTCdktpa/ElfkLdGosNP0wGyeYP.
+      failed_login_attempts: 0
+      logged_in: False
+cookie:
+  expiry_days: 30
+  key: random_signature_key
+  name: random_cookie_name
+pre-authorized:
+  emails: []

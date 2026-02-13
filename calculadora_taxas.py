@@ -4,6 +4,9 @@ from typing import Optional
 import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
+import re
+import unicodedata
+from difflib import SequenceMatcher
 
 # =============================
 # CONFIGURAÇÃO DE ARQUIVOS CSV
@@ -16,9 +19,17 @@ ATIVIDADES_CSV_PATH = "ANEXO_I_cleaned_with_portes.csv"
 # colunas esperadas:
 #   ANEXO, DESCRICAO, PORTE, POTENCIAL_POLUIDOR, TLP, TLI, TLO
 TAXAS_CSV_PATH = "taxas_ambientais_ufar.csv"
+TAXAS_SEDAM_CSV_PATH = "taxas_sedam_upfs_ground_truth_clean.csv"
 
 # CSV com CNAEs (subclasse, denominacao)
 CNAE_CSV_PATH = "IBGE_CNAE_Subclass2.3.csv"
+
+# Planilha com atividades LAS e CNAEs
+LAS_XLSX_PATH = "Lista de atividades LAS E CNAES.xlsx"
+
+# Segurança do mapeamento automático CNAE -> Atividade.
+# Quanto maior, menor risco de falso positivo.
+SCORE_MINIMO_MAPEAMENTO_CNAE = 0.75
 
 
 # =============================
@@ -88,6 +99,15 @@ def carregar_tabelas_taxas(caminho_csv: str = TAXAS_CSV_PATH) -> pd.DataFrame:
         # Normaliza nomes de colunas (maiúsculas, sem espaços extras)
         df.columns = [c.strip().upper() for c in df.columns]
 
+        # Compatibilidade com arquivos legados em minúsculas/nomes alternativos
+        renomear = {
+            "DESCRICAO_TABELA": "DESCRICAO",
+            "TLP_UPFS": "TLP",
+            "TLI_UPFS": "TLI",
+            "TLO_UPFS": "TLO",
+        }
+        df = df.rename(columns={k: v for k, v in renomear.items() if k in df.columns})
+
         # Normaliza campos de filtro
         for col in ["ANEXO", "PORTE", "POTENCIAL_POLUIDOR"]:
             if col in df.columns:
@@ -154,6 +174,17 @@ def carregar_cnaes(caminho_csv: str = CNAE_CSV_PATH) -> pd.DataFrame:
         return pd.DataFrame()
 
 
+def carregar_tabela_las(caminho_xlsx: str = LAS_XLSX_PATH) -> pd.DataFrame:
+    """Carrega a planilha LAS com colunas de CNAE e descrição da tabela LAS."""
+    try:
+        df = pd.read_excel(caminho_xlsx, dtype=str)
+        df.columns = [c.strip() for c in df.columns]
+        return df.fillna("")
+    except Exception as e:
+        st.error(f"Erro ao carregar a planilha LAS ({caminho_xlsx}): {e}")
+        return pd.DataFrame()
+
+
 # =============================
 # NORMALIZAÇÕES
 # =============================
@@ -172,6 +203,18 @@ def normalizar_potencial_poluidor(valor: str) -> str:
     return "Médio"
 
 
+def classe_potencial_poluidor(valor: str) -> str:
+    """Converte o potencial para sufixo CSS sem acentos: baixo|medio|alto."""
+    v = normalizar_texto(valor)
+    if "baixo" in v:
+        return "baixo"
+    if "alto" in v:
+        return "alto"
+    if "medio" in v:
+        return "medio"
+    return ""
+
+
 def inferir_tipo_medicao_por_unidade(unidade: str) -> str:
     """Inferir o tipo de medição (area, potencia, funcionarios) a partir do texto da UNIDADE_DE_MEDIDA."""
     if not unidade:
@@ -185,6 +228,245 @@ def inferir_tipo_medicao_por_unidade(unidade: str) -> str:
         return "funcionarios"
     # Padrão
     return "area"
+
+
+def normalizar_texto(texto: str) -> str:
+    """Remove acentos e caracteres não alfanuméricos para comparação textual."""
+    if texto is None:
+        return ""
+    s = str(texto).strip().lower()
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(ch for ch in s if not unicodedata.combining(ch))
+    s = re.sub(r"[^a-z0-9\s]", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+
+def normalizar_cnae_codigo(codigo: str) -> str:
+    """
+    Normaliza CNAE para comparação.
+    Trata variações como 1099-6/4 e 1099-6/04 como equivalentes.
+    """
+    s = str(codigo or "").strip()
+
+    # Tenta extrair no formato canônico XXXX-X/XX
+    m = re.search(r"(\d{4})\D*(\d)\D*(\d{1,2})", s)
+    if m:
+        base, dv, sub = m.groups()
+        return f"{base}{dv}{sub.zfill(2)}"
+
+    # Fallback por dígitos
+    digits = re.sub(r"\D", "", s)
+    if len(digits) >= 6:
+        return digits[:5] + digits[5:].zfill(2)
+    return digits
+
+
+def extrair_codigo_cnae_display(display: str) -> str:
+    """Extrai o código CNAE do formato '0000-0/00 - descrição'."""
+    if not display:
+        return ""
+    return str(display).split(" - ", 1)[0].strip()
+
+
+def sanitizar_cnpj_cpf_input():
+    """Permite apenas números e separadores válidos para CNPJ/CPF."""
+    valor = st.session_state.get("cnpj_cpf_input", "")
+    valor_limpo = re.sub(r"[^0-9./-]", "", str(valor))
+    if valor_limpo != valor:
+        st.session_state["cnpj_cpf_input"] = valor_limpo
+
+
+def preparar_atividades(df_atividades: pd.DataFrame) -> pd.DataFrame:
+    """Prepara dataframe do Anexo I com flags de grupo/subatividade."""
+    df = df_atividades.copy()
+    df["ITEM_STR"] = df["ITEM"].astype(str).str.strip()
+    df["ITEM_BASE"] = df["ITEM_STR"].str.split(".").str[0]
+    df["IS_GRUPO"] = ~df["ITEM_STR"].str.contains(".", regex=False, na=False)
+    return df
+
+
+def mapear_cnaes_para_atividades(
+    cnaes_selecionados: list[str], df_cnaes: pd.DataFrame, atividades_df: pd.DataFrame
+) -> list[dict]:
+    """Mapeia cada CNAE selecionado para uma atividade do Anexo I por similaridade textual."""
+    if not cnaes_selecionados or df_cnaes.empty or atividades_df.empty:
+        return []
+
+    atividades_sub = atividades_df[~atividades_df["IS_GRUPO"]].copy()
+    grupos_df = atividades_df[atividades_df["IS_GRUPO"]].copy()
+    atividades_sub["ATIVIDADE_NORM"] = atividades_sub["Atividade"].astype(str).map(normalizar_texto)
+
+    cnae_map = {}
+    if {"subclasse", "denominacao"}.issubset(df_cnaes.columns):
+        for _, row in df_cnaes.iterrows():
+            cnae_map[normalizar_cnae_codigo(row["subclasse"])] = str(row["denominacao"])
+
+    resultados = []
+    for display in cnaes_selecionados:
+        codigo = extrair_codigo_cnae_display(display)
+        codigo_norm = normalizar_cnae_codigo(codigo)
+        denominacao = cnae_map.get(codigo_norm, "")
+        den_norm = normalizar_texto(denominacao)
+
+        melhor_idx = None
+        melhor_score = 0.0
+        for idx, row in atividades_sub.iterrows():
+            atividade_norm = row["ATIVIDADE_NORM"]
+            if not den_norm or not atividade_norm:
+                score = 0.0
+            elif den_norm in atividade_norm or atividade_norm in den_norm:
+                score = 1.0
+            else:
+                score = SequenceMatcher(None, den_norm, atividade_norm).ratio()
+
+            if score > melhor_score:
+                melhor_score = score
+                melhor_idx = idx
+
+        mapeado = melhor_idx is not None and melhor_score >= SCORE_MINIMO_MAPEAMENTO_CNAE
+        atividade = ""
+        grupo = ""
+        item_base = ""
+        potencial = ""
+        anexo = ""
+        unidade = ""
+
+        if mapeado:
+            linha = atividades_sub.loc[melhor_idx]
+            item_base = str(linha["ITEM_BASE"])
+            atividade = str(linha["Atividade"])
+            potencial = normalizar_potencial_poluidor(str(linha.get("POTENCIAL_POLUIDOR", "") or ""))
+            anexo = str(linha.get("ANEXO_OU_TAXA", "") or "").strip() or "ANEXO II"
+            unidade = str(linha.get("UNIDADE_DE_MEDIDA", "") or "").strip()
+            grupo_row = grupos_df[grupos_df["ITEM_BASE"] == item_base]
+            if not grupo_row.empty:
+                grupo = f"{item_base} - {grupo_row.iloc[0]['Atividade']}"
+
+        resultados.append(
+            {
+                "cnae_display": display,
+                "cnae_codigo": codigo,
+                "cnae_denominacao": denominacao,
+                "mapeado": mapeado,
+                "score": round(melhor_score, 3),
+                "grupo": grupo,
+                "item_base": item_base,
+                "atividade": atividade,
+                "potencial": potencial,
+                "anexo": anexo,
+                "unidade": unidade,
+            }
+        )
+
+    return resultados
+
+
+def verificar_cnaes_em_las(cnaes_selecionados: list[str], df_las: pd.DataFrame) -> tuple[bool, list[dict]]:
+    """Retorna se algum CNAE está na lista LAS e os matches encontrados."""
+    if not cnaes_selecionados or df_las.empty:
+        return False, []
+
+    colunas = list(df_las.columns)
+    col_cnae = next((c for c in colunas if normalizar_texto(c) == "codigo cnae"), None)
+    if not col_cnae and colunas:
+        col_cnae = colunas[0]  # coluna A
+    if not col_cnae:
+        return False, []
+
+    col_item = next((c for c in colunas if normalizar_texto(c) == "item"), None)
+    if not col_item and len(colunas) >= 3:
+        col_item = colunas[2]  # coluna C
+
+    col_tabela = next((c for c in colunas if "tabela las" in normalizar_texto(c)), None)
+    if not col_tabela and len(colunas) >= 4:
+        col_tabela = colunas[3]  # coluna D
+
+    cnaes_las_map = {}
+    for _, row in df_las.iterrows():
+        codigo_norm = normalizar_cnae_codigo(row[col_cnae])
+        item_val = str(row[col_item]).strip() if col_item else ""
+        tabela_val = str(row[col_tabela]).strip() if col_tabela else ""
+        if item_val.lower() == "nan":
+            item_val = ""
+        if tabela_val.lower() == "nan":
+            tabela_val = ""
+        # Regra: só considera LAS quando houver item associado (coluna C) e tabela LAS (coluna D).
+        if codigo_norm and item_val and tabela_val:
+            cnaes_las_map[codigo_norm] = {"item": item_val, "atividade_las": tabela_val}
+
+    matches = []
+    for display in cnaes_selecionados:
+        codigo = extrair_codigo_cnae_display(display)
+        codigo_norm = normalizar_cnae_codigo(codigo)
+        if codigo_norm in cnaes_las_map:
+            matches.append(
+                {
+                    "cnae_display": display,
+                    "cnae_codigo": codigo,
+                    "item_las": cnaes_las_map[codigo_norm]["item"],
+                    "atividade_las": cnaes_las_map[codigo_norm]["atividade_las"],
+                }
+            )
+
+    return len(matches) > 0, matches
+
+
+def calcular_enquadramento_final(
+    municipio: str,
+    possui_mapeamento_cnae: bool,
+    potencial_poluidor: str,
+    possui_cnae_las: bool,
+) -> tuple[dict, bool]:
+    """
+    Ponto único da decisão final de enquadramento.
+    Regra LAS: CNAE na planilha LAS (coluna A) com Item (C) e Tabela LAS (D) preenchidos.
+    """
+    las_aplicavel = possui_cnae_las
+    if las_aplicavel:
+        return (
+            {"enquadramento": "LAS", "orgao": "SEMA", "tipo_licenca": "Licença Simplificada"},
+            True,
+        )
+
+    # Fora da condição LAS, segue fluxo normal.
+    return (
+        definir_enquadramento(
+            municipio=municipio,
+            possui_mapeamento_cnae=possui_mapeamento_cnae,
+            potencial_poluidor=potencial_poluidor,
+            is_las=False,
+        ),
+        False,
+    )
+
+
+def definir_enquadramento(
+    municipio: str,
+    possui_mapeamento_cnae: bool,
+    potencial_poluidor: str,
+    is_las: bool,
+) -> dict:
+    """
+    Define enquadramento final e órgão.
+    Regra adotada para conflito: potencial Médio e Alto seguem SEDAM; Baixo segue SEMA.
+    """
+    if municipio != "Ariquemes - RO":
+        if is_las:
+            return {"enquadramento": "LAS", "orgao": "SEMA", "tipo_licenca": "Licença Simplificada"}
+        return {"enquadramento": "LP/LI/LO", "orgao": "SEMA", "tipo_licenca": "LP/LI/LO"}
+
+    # LAS tem prioridade sobre as demais regras.
+    if is_las:
+        return {"enquadramento": "LAS", "orgao": "SEMA", "tipo_licenca": "Licença Simplificada"}
+
+    if not possui_mapeamento_cnae:
+        return {"enquadramento": "Dispensa", "orgao": "SEMA", "tipo_licenca": "Dispensa"}
+
+    if potencial_poluidor == "Baixo":
+        return {"enquadramento": "LP/LI/LO", "orgao": "SEMA", "tipo_licenca": "LP/LI/LO"}
+
+    return {"enquadramento": "LP/LI/LO", "orgao": "SEDAM", "tipo_licenca": "LP/LI/LO"}
 
 
 # =============================
@@ -366,7 +648,31 @@ st.markdown("""
         font-size: 1.3rem;
         margin-bottom: 1rem;
     }
-    
+
+    .enq-badge {
+        display: inline-block;
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 0.92rem;
+        letter-spacing: 0.3px;
+        border: 1px solid transparent;
+        vertical-align: middle;
+    }
+
+    .enq-las {
+        background: linear-gradient(135deg, #eafaf3 0%, #d6f5e7 100%);
+        color: #0f6d49;
+        border-color: #2d8b6b;
+        box-shadow: 0 1px 4px rgba(45, 139, 107, 0.2);
+    }
+
+    .enq-default {
+        background-color: #edf2f7;
+        color: #2d3748;
+        border-color: #cbd5e0;
+    }
+
     .pollution-indicator {
         display: inline-block;
         padding: 0.3rem 0.8rem;
@@ -484,6 +790,18 @@ def obter_taxa_ufar(df_taxas: pd.DataFrame, anexo: str, porte_app: str,
     ]
 
     if df_filtrado.empty:
+        # Alguns anexos especiais usam PORTE "-" (valor único por potencial).
+        df_filtrado = df_taxas[
+            df_taxas["ANEXO"]
+            .str.replace(" ", "", regex=False)
+            .str.upper()
+            .str.strip()
+            .eq(anexo_norm)
+            & df_taxas["PORTE"].str.strip().eq("-")
+            & df_taxas["POTENCIAL_POLUIDOR"].str.strip().str.upper().eq(potencial_poluidor.upper())
+        ]
+
+    if df_filtrado.empty:
         valores_default = {
             "Licença Prévia": 50,
             "Licença de Instalação": 75,
@@ -577,22 +895,43 @@ with tab_calc:
         cnpj_cpf = st.text_input(
             "CNPJ/CPF",
             placeholder="00.000.000/0000-00 ou 000.000.000-00",
+            label_visibility="collapsed",
+            key="cnpj_cpf_input",
+            on_change=sanitizar_cnpj_cpf_input
+        )
+
+        # 1.1 Dados opcionais de contato
+        st.write("")  # Spacer
+        render_step_header("1.1", "Qual seu email? (opcional)", required=False)
+        email_contato = st.text_input(
+            "Email",
+            placeholder="nome@empresa.com",
+            label_visibility="collapsed"
+        )
+
+        st.write("")  # Spacer
+        render_step_header("1.2", "Qual seu telefone? (opcional)", required=False)
+        telefone_contato = st.text_input(
+            "Telefone",
+            placeholder="(69) 99999-9999",
             label_visibility="collapsed"
         )
 
         # 2. Seleção de CNAEs
         st.write("")  # Spacer
-        render_step_header("2", "Atividades Requeridas - selecione apenas o(s) CNAE(s)", required=True)
+        render_step_header("2", "Atividades Requeridas - selecione o CNAE", required=True)
         
         df_cnaes = carregar_cnaes()
         opcoes_cnaes = df_cnaes["DISPLAY"].tolist() if not df_cnaes.empty else []
         
-        cnaes_selecionados = st.multiselect(
+        cnae_selecionado = st.selectbox(
             "CNAEs",
             options=opcoes_cnaes,
+            index=None,
             label_visibility="collapsed",
-            placeholder="Selecione um ou mais CNAEs..."
+            placeholder="Digite para buscar e selecione um CNAE..."
         )
+        cnaes_selecionados = [cnae_selecionado] if cnae_selecionado else []
 
         # 3. Seleção do município
         st.write("")  # Spacer
@@ -608,20 +947,14 @@ with tab_calc:
         valor_ufir = config_municipio["ufir"]
         lei_referencia = config_municipio["lei"]
 
-        # 4. Seleção do grupo de atividade a partir do ANEXO I
-        st.write("")  # Spacer
-        render_step_header("4", "Qual o Grupo de sua Atividade?", required=True)
+        # Grupo/atividade seguem automáticos (não exibidos no formulário principal)
 
         atividades_df = carregar_atividades_anexo_i()
         if atividades_df.empty:
             st.error("Não foi possível carregar o ANEXO I. Verifique o arquivo CSV limpo.")
             st.stop()
 
-        atividades_df = atividades_df.copy()
-        atividades_df["ITEM_STR"] = atividades_df["ITEM"].astype(str).str.strip()
-        atividades_df["ITEM_BASE"] = atividades_df["ITEM_STR"].str.split(".").str[0]
-        # Grupos = linhas sem ponto (1, 2, 3, ...)
-        atividades_df["IS_GRUPO"] = ~atividades_df["ITEM_STR"].str.contains(".", regex=False, na=False)
+        atividades_df = preparar_atividades(atividades_df)
 
         grupos_df = atividades_df[atividades_df["IS_GRUPO"]].copy().sort_values("ITEM_BASE")
 
@@ -629,48 +962,34 @@ with tab_calc:
             st.error("Nenhum grupo encontrado no ANEXO I (linhas com ITEM = 1, 2, 3, ...).")
             st.stop()
 
-        opcoes_grupo = {
-            f"{row['ITEM_BASE']} - {row['Atividade']}": row["ITEM_BASE"]
-            for _, row in grupos_df.iterrows()
-        }
+        # Mapeamento automático de CNAE -> Atividade/Grupo (foco Ariquemes)
+        mapeamentos_cnae = mapear_cnaes_para_atividades(cnaes_selecionados, df_cnaes, atividades_df)
+        mapeados_validos = [m for m in mapeamentos_cnae if m["mapeado"]]
+        melhor_mapeamento = max(mapeados_validos, key=lambda m: m["score"], default=None)
 
-        labels_grupo = list(opcoes_grupo.keys())
-
-        grupo_selecionado_label = st.selectbox(
-            "Grupo",
-            options=labels_grupo,
-            index=0,
-            label_visibility="collapsed",
-        )
-
-        if not grupo_selecionado_label:
-            st.info("Selecione um grupo para continuar.")
+        subatividades_df = atividades_df[~atividades_df["IS_GRUPO"]].copy()
+        if subatividades_df.empty:
+            st.error("Não há subatividades cadastradas no ANEXO I.")
             st.stop()
 
-        grupo_base = opcoes_grupo[grupo_selecionado_label]
-        grupo_selecionado = grupo_selecionado_label  # para resumo
+        linha_atividade = None
+        if melhor_mapeamento:
+            linha_candidata = subatividades_df[
+                (subatividades_df["ITEM_BASE"] == melhor_mapeamento["item_base"])
+                & (subatividades_df["Atividade"] == melhor_mapeamento["atividade"])
+            ]
+            if not linha_candidata.empty:
+                linha_atividade = linha_candidata.iloc[0]
 
-        # 5. Sub-atividade
-        st.write("")  # Spacer
-        render_step_header("5", "Qual é a sua Atividade?", required=True)
+        # Fallback técnico apenas para manter o formulário funcional enquanto não há CNAE.
+        if linha_atividade is None:
+            linha_atividade = subatividades_df.iloc[0]
 
-        sub_df = atividades_df[
-            (atividades_df["ITEM_BASE"] == grupo_base) & (~atividades_df["IS_GRUPO"])
-        ].copy()
-
-        if sub_df.empty:
-            st.error("Não há subatividades para o grupo selecionado no ANEXO I.")
-            st.stop()
-
-        opcoes_atividade = sub_df["Atividade"].dropna().tolist()
-
-        atividade_selecionada = st.selectbox(
-            "Atividade",
-            options=opcoes_atividade,
-            label_visibility="collapsed",
-        )
-
-        linha_atividade = sub_df[sub_df["Atividade"] == atividade_selecionada].iloc[0]
+        grupo_base = str(linha_atividade["ITEM_BASE"])
+        grupo_row = grupos_df[grupos_df["ITEM_BASE"] == grupo_base]
+        grupo_nome = str(grupo_row.iloc[0]["Atividade"]) if not grupo_row.empty else "Grupo não identificado"
+        grupo_selecionado = f"{grupo_base} - {grupo_nome}"
+        atividade_selecionada = str(linha_atividade["Atividade"])
 
         # UNIDADE_DE_MEDIDA, POTENCIAL_POLUIDOR e ANEXO diretamente do CSV
         unidade_medida = str(linha_atividade.get("UNIDADE_DE_MEDIDA", "") or "").strip()
@@ -681,63 +1000,48 @@ with tab_calc:
         # Infere tipo de medição
         tipo_medicao = inferir_tipo_medicao_por_unidade(unidade_medida)
 
-        # Exibe potencial poluidor
-        if potencial_poluidor == "Baixo":
-            pollution_class = "pollution-baixo"
-        elif potencial_poluidor == "Alto":
-            pollution_class = "pollution-alto"
-        else:
-            pollution_class = "pollution-medio"
+        # Enquadramento final é calculado apenas no clique do botão.
+        possui_mapeamento_cnae = len(mapeados_validos) > 0
+        enquadramento_info = {"enquadramento": "Pendente", "orgao": "-", "tipo_licenca": "-"}
 
-        st.markdown(
-            f"""
-            <div class="info-box">
-                <strong>🔍 Potencial Poluidor Detectado:</strong> 
-                <span class="pollution-indicator {pollution_class}">{potencial_poluidor}</span>
-                <br><small>Classificação conforme Lei 2.349/2019 - Anexo I (tabela oficial).</small>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-        st.markdown("---")
-
-        # 6. Medida do empreendimento (campo baseado na UNIDADE_DE_MEDIDA)
-        render_step_header("6", "Informe a medida do seu empreendimento:", required=True)
+        # 4. Medida do empreendimento (campo baseado na UNIDADE_DE_MEDIDA)
+        render_step_header("4", "Informe a medida do seu empreendimento:", required=True)
 
         if tipo_medicao == "area":
-            valor_medida = st.number_input(
-                unidade_medida or "Informe a área (ex.: hectares): *",
-                min_value=0.0,
-                value=0.0,
-                step=1.0,
-                format="%.2f",
-                help=f"Unidade de medida: {unidade_medida}" if unidade_medida else None,
-            )
+            label_medida = unidade_medida or "Informe a área (ex.: hectares): *"
+            placeholder_medida = "Ex.: 12,5"
         elif tipo_medicao == "potencia":
-            valor_medida = st.number_input(
-                unidade_medida or "Informe a potência instalada (kW): *",
-                min_value=0.0,
-                value=0.0,
-                step=1.0,
-                format="%.2f",
-                help=f"Unidade de medida: {unidade_medida}" if unidade_medida else None,
-            )
+            label_medida = unidade_medida or "Informe a potência instalada (kW): *"
+            placeholder_medida = "Ex.: 150"
         else:  # funcionarios
-            valor_medida = st.number_input(
-                unidade_medida or "Informe o número de funcionários: *",
-                min_value=0,
-                value=0,
-                step=1,
-                help=f"Unidade de medida: {unidade_medida}" if unidade_medida else None,
-            )
+            label_medida = unidade_medida or "Informe o número de funcionários: *"
+            placeholder_medida = "Ex.: 10"
+
+        valor_medida_raw = st.text_input(
+            label_medida,
+            value="",
+            placeholder=placeholder_medida,
+            help=f"Unidade de medida: {unidade_medida}" if unidade_medida else None,
+        )
+
+        medida_invalida = False
+        valor_medida = 0.0
+        if str(valor_medida_raw).strip():
+            valor_normalizado = str(valor_medida_raw).strip().replace(",", ".")
+            try:
+                valor_convertido = float(valor_normalizado)
+                if tipo_medicao == "funcionarios" and not valor_convertido.is_integer():
+                    medida_invalida = True
+                else:
+                    valor_medida = int(valor_convertido) if tipo_medicao == "funcionarios" else valor_convertido
+            except ValueError:
+                medida_invalida = True
 
         # Classifica o porte usando ANEXO I (PORTE_*_MIN/MAX)
         porte_encontrado = classificar_porte_por_linha_valor(float(valor_medida), linha_atividade)
         
         if porte_encontrado is None:
             porte_texto = "Não Definido"
-            st.error(f"⚠️ Não foi possível determinar o porte para a medida {valor_medida}. Verifique se o valor está dentro das faixas do Anexo I.")
         else:
             porte_texto = MAPA_PORTE_TABELA_PARA_APP.get(porte_encontrado, porte_encontrado)
 
@@ -748,44 +1052,7 @@ with tab_calc:
             medida_texto = f"{valor_medida}"
 
     with col2:
-        st.markdown('<p class="summary-title">📊 Resumo da Solicitação</p>', unsafe_allow_html=True)
-        st.markdown(f"**CNPJ/CPF:** {cnpj_cpf if cnpj_cpf else 'Não informado'}")
-        
-        if cnaes_selecionados:
-            cnaes_str = "; ".join(cnaes_selecionados)
-            # Trunca se for muito longo para não quebrar o layout
-            if len(cnaes_str) > 100:
-                cnaes_display = cnaes_str[:100] + "..."
-            else:
-                cnaes_display = cnaes_str
-            st.markdown(f"**CNAEs:** {cnaes_display}")
-        else:
-            st.markdown("**CNAEs:** Não selecionado")
-
-        st.markdown(f"**Município:** {municipio_selecionado}")
-        st.markdown(f"**Grupo:** {grupo_selecionado}")
-        st.markdown(f"**Atividade:** {atividade_selecionada}")
-        st.markdown(f"**Medida:** {medida_texto}")
-        st.markdown(f"**Porte:** {porte_texto}")
-
-        pollution_colors = {
-            "Baixo": "#4caf50",
-            "Médio": "#ff9800",
-            "Alto": "#f44336"
-        }
-        st.markdown(f"""
-            <div style="margin: 1rem 0;">
-                <strong>Potencial Poluidor:</strong>
-                <div style="background: {pollution_colors.get(potencial_poluidor, '#999')}; 
-                            color: white; padding: 0.5rem; border-radius: 0.3rem; 
-                            text-align: center; margin-top: 0.5rem; font-weight: bold;">
-                    {potencial_poluidor}
-                </div>
-            </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown(f"**Valor UFIR:** R$ {valor_ufir:.2f}")
-        st.markdown(f"**Legislação:** {lei_referencia}")
+        st.empty()
 
     # =============================
     # CÁLCULO DAS TAXAS
@@ -793,7 +1060,7 @@ with tab_calc:
 
     st.markdown("---")
 
-    if st.button("🧮 CALCULAR TAXAS", type="primary", width="stretch"):
+    if st.button("🧮 ENQUADRAMENTO AMBIENTAL E TAXAS", type="primary", width="stretch"):
         if not cnpj_cpf:
             st.error("⚠️ Por favor, informe o CNPJ ou CPF do empreendedor.")
             st.stop()
@@ -802,91 +1069,232 @@ with tab_calc:
             st.error("⚠️ Por favor, selecione pelo menos um CNAE.")
             st.stop()
 
+        if medida_invalida:
+            st.error("⚠️ A medida informada é inválida. Corrija o valor para continuar.")
+            st.stop()
+
         if valor_medida <= 0:
             st.error("⚠️ Por favor, informe as medidas do seu empreendimento antes de calcular as taxas.")
             st.stop()
-            
+
         if porte_texto == "Não Definido":
             st.error("⚠️ Impossível calcular: O porte não foi identificado para a medida informada.")
             st.stop()
-        
-        df_taxas = carregar_tabelas_taxas()
 
-        st.markdown(f"""
+        # Decisão final de enquadramento em um único ponto.
+        # Recalcula LAS no clique para evitar estado intermediário/stale.
+        tabela_las_click_df = carregar_tabela_las()
+        is_las_click, las_matches_click = verificar_cnaes_em_las(cnaes_selecionados, tabela_las_click_df)
+        enquadramento_info, las_aplicavel = calcular_enquadramento_final(
+            municipio=municipio_selecionado,
+            possui_mapeamento_cnae=possui_mapeamento_cnae,
+            potencial_poluidor=potencial_poluidor,
+            possui_cnae_las=is_las_click,
+        )
+        las_matches_aplicaveis = las_matches_click if las_aplicavel else []
+
+        enquadramento_badge = (
+            f"<span class='enq-badge enq-las'>{enquadramento_info['enquadramento']}</span>"
+            if enquadramento_info["enquadramento"] == "LAS"
+            else f"<span class='enq-badge enq-default'>{enquadramento_info['enquadramento']}</span>"
+        )
+
+        cnaes_resumo = "; ".join(cnaes_selecionados)
+        cnaes_resumo = cnaes_resumo if len(cnaes_resumo) <= 120 else cnaes_resumo[:120] + "..."
+        potencial_resumo = potencial_poluidor if melhor_mapeamento else "Não informado"
+        classe_potencial_resumo = classe_potencial_poluidor(potencial_resumo)
+        potencial_resumo_html = (
+            f"<span class='pollution-indicator pollution-{classe_potencial_resumo}'>{potencial_resumo}</span>"
+            if classe_potencial_resumo
+            else potencial_resumo
+        )
+
+        st.markdown(
+            f"""
             <div class="result-box">
-                <h3>💰 Valores das Taxas de Licenciamento Ambiental</h3>
-                <p><strong>Empreendedor (CNPJ/CPF):</strong> {cnpj_cpf}</p>
-                <p><strong>CNAEs:</strong> {len(cnaes_selecionados)} selecionado(s)</p>
-                <p><strong>Empreendimento:</strong> {atividade_selecionada}</p>
-                <p><strong>Município:</strong> {municipio_selecionado} | 
-                   <strong>Porte:</strong> {porte_texto} | 
-                   <strong>Potencial Poluidor:</strong> <span class="pollution-indicator pollution-{potencial_poluidor.lower()}">{potencial_poluidor}</span></p>
-                <hr>
+                <h3>📊 Resumo da Solicitação</h3>
+                <p><strong>CNPJ/CPF:</strong> {cnpj_cpf}</p>
+                <p><strong>Email:</strong> {email_contato or 'Não informado'}</p>
+                <p><strong>Telefone:</strong> {telefone_contato or 'Não informado'}</p>
+                <p><strong>CNAEs:</strong> {cnaes_resumo}</p>
+                <p><strong>Município:</strong> {municipio_selecionado}</p>
+                <p><strong>Medida:</strong> {medida_texto if valor_medida > 0 else 'Não informado'}</p>
+                <p><strong>Porte:</strong> {porte_texto if porte_texto != 'Não Definido' else 'Não informado'}</p>
+                <p><strong>Potencial Poluidor:</strong> {potencial_resumo_html}</p>
+                <p><strong>Enquadramento:</strong> {enquadramento_badge} | <strong>Órgão:</strong> {enquadramento_info['orgao']}</p>
             </div>
-        """, unsafe_allow_html=True)
+            """,
+            unsafe_allow_html=True,
+        )
 
-        col_lic1, col_lic2 = st.columns(2)
         todos_valores = {}
+        valor_total_todas = 0.0
+        atividade_para_salvar = atividade_selecionada
+        grupo_para_salvar = grupo_selecionado
 
-        for i, (servico, info) in enumerate(SERVICOS.items()):
-            valor_total, valor_ufars = calcular_taxa(
-                servico=servico,
-                porte_nome=porte_texto,
-                anexo=anexo_selecionado,
-                potencial_poluidor=potencial_poluidor,
-                df_taxas=df_taxas,
-                valor_ufir=valor_ufir
+        if enquadramento_info["enquadramento"] == "LAS":
+            cnaes_las = ", ".join(m["cnae_codigo"] for m in las_matches_aplicaveis) if las_matches_aplicaveis else "Não detalhado"
+            valor_las_ufar = 10.0
+            valor_las_reais = valor_las_ufar * valor_ufir
+            descricoes_las = [str(m.get("atividade_las", "")).strip() for m in las_matches_aplicaveis]
+            descricoes_las = [d for d in descricoes_las if d]
+            descricao_las_db = " | ".join(dict.fromkeys(descricoes_las)) if descricoes_las else "LAS"
+
+            st.success("✅ Enquadramento: LAS (Licença Ambiental Simplificada).")
+            st.info(f"CNAE(s) enquadrados em LAS: {cnaes_las}. Órgão responsável: {enquadramento_info['orgao']}.")
+            st.markdown(
+                f"""
+                <div class="result-box">
+                    <h3>💰 Taxa LAS</h3>
+                    <p><strong>Taxa fixa:</strong> {valor_las_ufar:.2f} UFAR</p>
+                    <p><strong>Valor estimado:</strong> R$ {valor_las_reais:.2f}</p>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+            todos_valores = {
+                "Licença Simplificada": {
+                    "valor_reais": valor_las_reais,
+                    "valor_ufar": valor_las_ufar,
+                    "codigo": "LAS",
+                    "descricao": "Licença Ambiental Simplificada",
+                }
+            }
+            valor_total_todas = valor_las_reais
+            # Para LAS, grupo e atividade no histórico devem refletir a coluna D da planilha LAS.
+            grupo_para_salvar = descricao_las_db
+            atividade_para_salvar = descricao_las_db
+
+        # Regra: sem mapeamento CNAE/SEMA (Ariquemes) -> Dispensa
+        elif enquadramento_info["enquadramento"] == "Dispensa":
+            st.success(
+                "✅ Enquadramento: DISPENSA. Nenhum CNAE selecionado teve mapeamento confiável para atividade SEMA."
+            )
+            st.info(
+                "Regra aplicada: se não houver CNAE mapeado para atividade/grupo, o empreendimento entra como dispensa."
+            )
+            todos_valores = {
+                "Dispensa": {
+                    "valor_reais": 0.0,
+                    "valor_ufar": 0.0,
+                    "codigo": "DISP",
+                    "descricao": "Dispensa de licenciamento",
+                }
+            }
+            valor_total_todas = 0.0
+            atividade_para_salvar = "Dispensa por ausência de mapeamento CNAE"
+
+        else:
+            caminho_taxas = TAXAS_SEDAM_CSV_PATH if enquadramento_info["orgao"] == "SEDAM" else TAXAS_CSV_PATH
+            df_taxas = carregar_tabelas_taxas(caminho_taxas)
+            classe_potencial_card = classe_potencial_poluidor(potencial_poluidor)
+            potencial_card_html = (
+                f"<span class='pollution-indicator pollution-{classe_potencial_card}'>{potencial_poluidor}</span>"
+                if classe_potencial_card
+                else potencial_poluidor
             )
 
-            todos_valores[servico] = {
-                "valor_reais": valor_total,
-                "valor_ufar": valor_ufars,
-                "codigo": info["codigo"],
-                "descricao": info["descricao"]
-            }
-
-            card_html = f"""
-                <div class="license-card">
-                    <div class="license-title">{info['codigo']} - {servico}</div>
-                    <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">{info['descricao']}</div>
-                    <div class="license-value">R$ {valor_total:,.2f}</div>
-                    <div style="font-size: 0.85rem; color: #999;">Taxa base: {valor_ufars:.2f} UFARs</div>
+            st.markdown(f"""
+                <div class="result-box">
+                    <h3>💰 Valores das Taxas de Licenciamento Ambiental</h3>
+                    <p><strong>Empreendedor (CNPJ/CPF):</strong> {cnpj_cpf}</p>
+                    <p><strong>CNAEs:</strong> {len(cnaes_selecionados)} selecionado(s)</p>
+                    <p><strong>Grupo:</strong> {grupo_selecionado}</p>
+                    <p><strong>Empreendimento:</strong> {atividade_selecionada}</p>
+                    <p><strong>Município:</strong> {municipio_selecionado} | 
+                       <strong>Órgão:</strong> {enquadramento_info['orgao']} |
+                       <strong>Porte:</strong> {porte_texto} | 
+                       <strong>Potencial Poluidor:</strong> {potencial_card_html}</p>
+                    <hr>
                 </div>
-            """
+            """, unsafe_allow_html=True)
 
-            if i < 3:
-                with col_lic1:
-                    st.markdown(card_html, unsafe_allow_html=True)
+            if enquadramento_info["orgao"] == "SEDAM":
+                st.info("Tabela aplicada: SEDAM (Lei 3.941/2016) - valores base em UPFs.")
+
+            col_lic1, col_lic2 = st.columns(2)
+
+            for i, (servico, info) in enumerate(SERVICOS.items()):
+                valor_total, valor_ufars = calcular_taxa(
+                    servico=servico,
+                    porte_nome=porte_texto,
+                    anexo=anexo_selecionado,
+                    potencial_poluidor=potencial_poluidor,
+                    df_taxas=df_taxas,
+                    valor_ufir=valor_ufir
+                )
+
+                todos_valores[servico] = {
+                    "valor_reais": valor_total,
+                    "valor_ufar": valor_ufars,
+                    "codigo": info["codigo"],
+                    "descricao": info["descricao"]
+                }
+
+                card_html = f"""
+                    <div class="license-card">
+                        <div class="license-title">{info['codigo']} - {servico}</div>
+                        <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">{info['descricao']}</div>
+                        <div class="license-value">R$ {valor_total:.2f}</div>
+                        <div style="font-size: 0.85rem; color: #999;">Taxa base: {valor_ufars:.2f} UFARs</div>
+                    </div>
+                """
+
+                if i < 3:
+                    with col_lic1:
+                        st.markdown(card_html, unsafe_allow_html=True)
+                else:
+                    with col_lic2:
+                        st.markdown(card_html, unsafe_allow_html=True)
+
+            st.markdown("---")
+            valor_total_todas = sum(v["valor_reais"] for v in todos_valores.values())
+
+            st.markdown(f"""
+                <div style="background-color: #e3f2fd; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #2196f3; margin-bottom: 1rem;">
+                    <h4>ℹ️ Sobre o Potencial Poluidor</h4>
+                    <p>O potencial poluidor <strong>{potencial_poluidor}</strong> foi determinado automaticamente com base na 
+                    atividade <em>"{atividade_selecionada}"</em>, conforme estabelecido no <strong>Anexo I da Lei Municipal 2.349/2019</strong>.</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Esta classificação afeta diretamente o valor das taxas de licenciamento.</p>
+                </div>
+            """, unsafe_allow_html=True)
+
+            if enquadramento_info["orgao"] == "SEMA":
+                st.markdown(f"""
+                    <div style="background-color: #fff3e0; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #ff9800;">
+                        <h4>📌 Resumo Total</h4>
+                        <p><strong>Valor total se todas as licenças fossem solicitadas:</strong> 
+                           <span style="font-size: 1.3rem; color: #ff6f00;">R$ {valor_total_todas:.2f}</span></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 1rem;">
+                            <strong>Observação:</strong> Normalmente, as licenças são solicitadas em sequência (LP → LI → LO), 
+                            não todas de uma vez. Este é um valor aproximado baseado nas tabelas oficiais da lei municipal.
+                        </p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            <strong>As taxas ambientais podem ser parceladas em até 6 vezes no boleto.</strong>
+                        </p>
+                    </div>
+                """, unsafe_allow_html=True)
             else:
-                with col_lic2:
-                    st.markdown(card_html, unsafe_allow_html=True)
+                st.markdown(f"""
+                    <div style="background-color: #fff3e0; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #ff9800;">
+                        <h4>📌 Resumo Total</h4>
+                        <p><strong>Valor total se todas as licenças fossem solicitadas:</strong> 
+                           <span style="font-size: 1.3rem; color: #ff6f00;">R$ {valor_total_todas:.2f}</span></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 1rem;">
+                            <strong>Observação:</strong> Valores estimados conforme tabela oficial do órgão ambiental competente.
+                        </p>
+                    </div>
+                """, unsafe_allow_html=True)
 
-        st.markdown("---")
-        valor_total_todas = sum(v["valor_reais"] for v in todos_valores.values())
-
-        st.markdown(f"""
-            <div style="background-color: #e3f2fd; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #2196f3; margin-bottom: 1rem;">
-                <h4>ℹ️ Sobre o Potencial Poluidor</h4>
-                <p>O potencial poluidor <strong>{potencial_poluidor}</strong> foi determinado automaticamente com base na 
-                atividade <em>"{atividade_selecionada}"</em>, conforme estabelecido no <strong>Anexo I da Lei Municipal 2.349/2019</strong>.</p>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Esta classificação afeta diretamente o valor das taxas de licenciamento.</p>
-            </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown(f"""
-            <div style="background-color: #fff3e0; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #ff9800;">
-                <h4>📌 Resumo Total</h4>
-                <p><strong>Valor total se todas as licenças fossem solicitadas:</strong> 
-                   <span style="font-size: 1.3rem; color: #ff6f00;">R$ {valor_total_todas:,.2f}</span></p>
-                <p style="font-size: 0.9rem; color: #666; margin-top: 1rem;">
-                    <strong>Observação:</strong> Normalmente, as licenças são solicitadas em sequência (LP → LI → LO), 
-                    não todas de uma vez. Este é um valor aproximado baseado nas tabelas oficiais da lei municipal.
-                </p>
-                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
-                    <strong>As taxas ambientais podem ser parceladas em até 6 vezes no boleto.</strong>
-                </p>
-            </div>
-        """, unsafe_allow_html=True)
+            st.markdown(
+                f"""
+                <div class="info-box">
+                    <strong>Regra de órgão aplicada:</strong> Potencial <strong>Baixo</strong> = SEMA; potencial
+                    <strong>Médio/Alto</strong> = SEDAM (quando não for LAS/Dispensa).
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
         # =============================
         # GERAÇÃO DE PDF
@@ -903,7 +1311,7 @@ with tab_calc:
                     pass
                 self.set_font('Arial', 'B', 15)
                 self.cell(80)
-                self.cell(30, 10, 'Calculadora de Taxas Ambientais', 0, 0, 'C')
+                self.cell(30, 10, 'Enquadramento de Licenciamento Ambiental', 0, 0, 'C')
                 self.ln(20)
 
             def footer(self):
@@ -911,7 +1319,7 @@ with tab_calc:
                 self.set_font('Arial', 'I', 8)
                 self.cell(0, 10, 'Atenas Projetos Ambientais - Página ' + str(self.page_no()) + '/{nb}', 0, 0, 'C')
 
-        def gerar_pdf(municipio, grupo, atividade, medida, porte, potencial, ufir, valores, cnpj_cpf, cnaes_list):
+        def gerar_pdf(municipio, grupo, atividade, medida, porte, potencial, ufir, valores, cnpj_cpf, cnaes_list, orgao):
             pdf = PDF()
             pdf.alias_nb_pages()
             pdf.add_page()
@@ -984,18 +1392,23 @@ with tab_calc:
             for servico, dados in valores.items():
                 pdf.cell(60, 10, f"{dados['codigo']} - {servico}", 1, 0)
                 pdf.cell(40, 10, f"{dados['valor_ufar']:.2f}", 1, 0, 'R')
-                pdf.cell(40, 10, f"R$ {dados['valor_reais']:,.2f}", 1, 0, 'R')
+                pdf.cell(40, 10, f"R$ {dados['valor_reais']:.2f}", 1, 0, 'R')
                 pdf.ln()
                 total += dados['valor_reais']
 
             pdf.ln(5)
             pdf.set_font('Arial', 'B', 10)
             pdf.cell(100, 10, 'Total Estimado:', 0, 0, 'R')
-            pdf.cell(40, 10, f"R$ {total:,.2f}", 0, 1, 'R')
+            pdf.cell(40, 10, f"R$ {total:.2f}", 0, 1, 'R')
 
-            pdf.ln(10)
-            pdf.set_font('Arial', 'I', 8)
-            pdf.multi_cell(0, 5, 'Observação: Os valores são estimativas baseadas na legislação municipal. O valor final pode variar conforme análise técnica do órgão ambiental. As taxas podem ser parceladas em até 6 vezes.')
+            if orgao == "SEMA":
+                pdf.ln(10)
+                pdf.set_font('Arial', 'I', 8)
+                pdf.multi_cell(0, 5, 'Observação: Os valores são estimativas baseadas na legislação municipal. O valor final pode variar conforme análise técnica do órgão ambiental. As taxas podem ser parceladas em até 6 vezes.')
+            else:
+                pdf.ln(10)
+                pdf.set_font('Arial', 'I', 8)
+                pdf.multi_cell(0, 5, 'Observação: Valores estimados conforme tabela oficial do órgão ambiental competente.')
 
             return pdf.output(dest='S').encode('latin-1')
 
@@ -1005,15 +1418,16 @@ with tab_calc:
         with col_dl2:
             pdf_bytes = gerar_pdf(
                 municipio_selecionado,
-                grupo_selecionado,
-                atividade_selecionada,
+                grupo_para_salvar,
+                atividade_para_salvar,
                 medida_texto,
                 porte_texto,
                 potencial_poluidor,
                 valor_ufir,
                 todos_valores,
                 cnpj_cpf,
-                cnaes_selecionados
+                cnaes_selecionados,
+                enquadramento_info["orgao"]
             )
             
             st.download_button(
@@ -1035,29 +1449,38 @@ with tab_calc:
         # Salva o cálculo
         database.salvar_calculo(
             municipio=municipio_selecionado,
-            grupo=grupo_selecionado,
-            atividade=atividade_selecionada,
+            grupo=grupo_para_salvar,
+            atividade=atividade_para_salvar,
             medida=medida_texto,
             porte=porte_texto,
             potencial=potencial_poluidor,
             valor_total=valor_total_todas,
             cnpj_cpf=cnpj_cpf,
-            cnaes="; ".join(cnaes_selecionados)
+            cnaes="; ".join(cnaes_selecionados),
+            email=email_contato,
+            telefone=telefone_contato,
+            usuario_login=st.session_state.get("username", ""),
+            usuario_nome=st.session_state.get("name", "")
         )
-        st.success("✅ Cálculo salvo no histórico com sucesso!")
 
 # =============================
 # HISTÓRICO / AUDITORIA (ADMIN)
 # =============================
 if tab_admin:
     with tab_admin:
-        st.header("📂 Histórico de Cálculos (Auditoria)")
+        st.header("📂 Histórico de Consultas")
         
         import database
         database.init_db()
         df_history = database.listar_calculos()
         
         if not df_history.empty:
+            colunas_prioritarias = ["usuario_login", "usuario_nome"]
+            colunas_existentes = [c for c in colunas_prioritarias if c in df_history.columns]
+            if colunas_existentes:
+                demais_colunas = [c for c in df_history.columns if c not in colunas_existentes]
+                df_history = df_history[colunas_existentes + demais_colunas]
+
             st.dataframe(df_history, width="stretch")
             
             csv = df_history.to_csv(index=False).encode('utf-8')
@@ -1074,8 +1497,8 @@ if tab_admin:
 st.markdown("---")
 st.markdown("""
     <div style="text-align: center; color: #666; font-size: 0.9rem; padding: 2rem 0;">
-        <p><strong>Calculadora de Taxas de Licenciamento Ambiental</strong></p>
-        <p>Atenas Projetos Ambientais | Versão 3.2 | 2025</p>
+        <p><strong>Enquadramento de Licenciamento Ambiental</strong></p>
+        <p>Atenas Projetos Ambientais | 2026</p>
         <p>Sistema com detecção automática de potencial poluidor conforme Lei 2.349/2019</p>
         <p>⚠️ Os valores apresentados são estimativas. Consulte sempre o órgão ambiental competente.</p>
     </div>

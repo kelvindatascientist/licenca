@@ -12,6 +12,36 @@ credentials:
       password: $2b$12$w5psIiNGLg6fW8pv.Lv/Ge.aRhTCdktpa/ElfkLdGosNP0wGyeYP.
       failed_login_attempts: 0
       logged_in: False
+    usuario1:
+      email: usuario1@example.com
+      name: NOME_PLACEHOLDER_1
+      password: SENHA_HASH_PLACEHOLDER_1
+      failed_login_attempts: 0
+      logged_in: False
+    usuario2:
+      email: usuario2@example.com
+      name: NOME_PLACEHOLDER_2
+      password: SENHA_HASH_PLACEHOLDER_2
+      failed_login_attempts: 0
+      logged_in: False
+    usuario3:
+      email: usuario3@example.com
+      name: NOME_PLACEHOLDER_3
+      password: SENHA_HASH_PLACEHOLDER_3
+      failed_login_attempts: 0
+      logged_in: False
+    usuario4:
+      email: usuario4@example.com
+      name: NOME_PLACEHOLDER_4
+      password: SENHA_HASH_PLACEHOLDER_4
+      failed_login_attempts: 0
+      logged_in: False
+    usuario5:
+      email: usuario5@example.com
+      name: NOME_PLACEHOLDER_5
+      password: SENHA_HASH_PLACEHOLDER_5
+      failed_login_attempts: 0
+      logged_in: False
 cookie:
   expiry_days: 30
   key: random_signature_key

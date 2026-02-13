@@ -1,0 +1,32 @@
+{
+  "csv_rows_total": 118,
+  "csv_rows_match_exato": 57,
+  "csv_rows_chave_ok_valor_divergente": 19,
+  "csv_rows_chave_nao_encontrada_no_pdf": 42,
+  "pdf_rows_extraidos_unicos": 164,
+  "pdf_rows_nao_presentes_no_csv": 107,
+  "csv_rows_nao_presentes_no_pdf": 61,
+  "csv_chaves_duplicadas_anexo_porte_potencial": 23,
+  "csv_anexos_total": 23,
+  "pdf_anexos_total": 33,
+  "anexos_no_pdf_faltando_no_csv": [
+    "ANEXO II",
+    "ANEXO IV",
+    "ANEXO V",
+    "ANEXO XIX",
+    "ANEXO XLV",
+    "ANEXO XX",
+    "ANEXO XXIII",
+    "ANEXO XXVI",
+    "ANEXO XXXI",
+    "ANEXO XXXIII",
+    "ANEXO XXXIV",
+    "ANEXO XXXV",
+    "ANEXO XXXVII"
+  ],
+  "anexos_no_csv_nao_encontrados_no_pdf": [
+    "ANEXO XL",
+    "ANEXO XXXIX",
+    "ANEXO XXXVIII"
+  ]
+}

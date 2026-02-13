@@ -5,7 +5,7 @@ credentials:
       failed_login_attempts: 0
       logged_in: False
       name: Admin User
-      password: $2b$12$g9BFhW6HQXX1FHlGRR7YhO9OPU9dXXWFClXm8dfw.3X2Jg2eUxjmW
+      password: $2b$12$xQP1cimoj0wFcuUsMsvvGueO.W671QQ81TVxpPNm1.07Ws8O702gK
     kelvin:
       email: kelvinpac@gmail.com
       name: Kelvin Pacheco

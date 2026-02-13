@@ -23,3 +23,4 @@ share/python-wheels/
 MANIFEST
 *.pyc
 
+generate_keys.py

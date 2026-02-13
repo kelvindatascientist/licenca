@@ -1,0 +1,163 @@
+ANEXO,DESCRICAO,PORTE,POTENCIAL_POLUIDOR,TLP,TLI,TLO
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Excepcional,Alto,10.0,300.0,500.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Excepcional,Médio,10.0,180.0,320.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Grande,Alto,10.0,180.0,280.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Grande,Baixo,10.0,90.0,180.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Grande,Médio,10.0,90.0,150.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Médio,Alto,10.0,100.0,180.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Médio,Baixo,10.0,45.0,90.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Médio,Médio,10.0,30.0,75.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Mínimo,Alto,10.0,12.0,12.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Mínimo,Baixo,8.0,8.0,8.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Mínimo,Médio,10.0,10.0,10.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Pequeno,Alto,10.0,25.0,40.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Pequeno,Baixo,10.0,18.0,25.0
+ANEXO II,"Tabelas de valores da TLP, TLI e TLO dos empreendimentos e atividades em geral (com exceção daqueles especificados nos anexos III a LIII)",Pequeno,Médio,10.0,14.0,20.0
+ANEXO III,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 1.1 do ANEXO I.",Excepcional,Médio,30.0,30.0,30.0
+ANEXO III,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 1.1 do ANEXO I.",Grande,Médio,25.0,25.0,25.0
+ANEXO III,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 1.1 do ANEXO I.",Médio,Médio,20.0,20.0,20.0
+ANEXO III,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 1.1 do ANEXO I.",Mínimo,Médio,10.0,10.0,10.0
+ANEXO III,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 1.1 do ANEXO I.",Pequeno,Médio,15.0,15.0,15.0
+ANEXO IV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITENS 2 e 3 do ANEXO I (exceto ITEM 3.9).",Excepcional,Alto,60.0,180.0,550.0
+ANEXO IV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITENS 2 e 3 do ANEXO I (exceto ITEM 3.9).",Grande,Alto,50.0,150.0,450.0
+ANEXO IV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITENS 2 e 3 do ANEXO I (exceto ITEM 3.9).",Médio,Alto,40.0,110.0,350.0
+ANEXO IV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITENS 2 e 3 do ANEXO I (exceto ITEM 3.9).",Mínimo,Alto,20.0,40.0,150.0
+ANEXO IV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITENS 2 e 3 do ANEXO I (exceto ITEM 3.9).",Pequeno,Alto,30.0,80.0,240.0
+ANEXO IX,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.1 DO ANEXO I",Excepcional,Alto,60.0,80.0,90.0
+ANEXO IX,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.1 DO ANEXO I",Grande,Alto,45.0,50.0,55.0
+ANEXO IX,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.1 DO ANEXO I",Médio,Alto,40.0,45.0,50.0
+ANEXO IX,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.1 DO ANEXO I",Mínimo,Alto,30.0,35.0,40.0
+ANEXO IX,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.1 DO ANEXO I",Pequeno,Alto,35.0,40.0,45.0
+ANEXO V,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 3.10 do ANEXO I",Excepcional,Alto,5.0,20.0,25.0
+ANEXO V,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 3.10 do ANEXO I",Grande,Alto,5.0,15.0,20.0
+ANEXO V,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 3.10 do ANEXO I",Médio,Alto,5.0,10.0,15.0
+ANEXO V,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 3.10 do ANEXO I",Mínimo,Alto,5.0,5.0,10.0
+ANEXO V,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 3.10 do ANEXO I",Pequeno,Alto,5.0,7.0,12.0
+ANEXO VII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 4.1 do ANEXO I",-,Alto,10.0,15.0,50.0
+ANEXO VIII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos nos itens 4.2, 4.4, 4.7 DO ANEXO I",Excepcional,Alto,50.0,100.0,120.0
+ANEXO VIII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos nos itens 4.2, 4.4, 4.7 DO ANEXO I",Grande,Alto,40.0,80.0,100.0
+ANEXO VIII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos nos itens 4.2, 4.4, 4.7 DO ANEXO I",Médio,Alto,35.0,70.0,70.0
+ANEXO VIII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos nos itens 4.2, 4.4, 4.7 DO ANEXO I",Mínimo,Alto,15.0,25.0,25.0
+ANEXO VIII,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos nos itens 4.2, 4.4, 4.7 DO ANEXO I",Pequeno,Alto,25.0,50.0,50.0
+ANEXO X,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.2 E 5.4 DO ANEXO I",Excepcional,Alto,90.0,150.0,180.0
+ANEXO X,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.2 E 5.4 DO ANEXO I",Grande,Alto,60.0,120.0,150.0
+ANEXO X,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.2 E 5.4 DO ANEXO I",Médio,Alto,50.0,100.0,120.0
+ANEXO X,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.2 E 5.4 DO ANEXO I",Mínimo,Alto,30.0,60.0,60.0
+ANEXO X,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.2 E 5.4 DO ANEXO I",Pequeno,Alto,40.0,90.0,90.0
+ANEXO XI,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.3 DO ANEXO I",Excepcional,Alto,50.0,60.0,80.0
+ANEXO XI,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.3 DO ANEXO I",Grande,Alto,40.0,50.0,60.0
+ANEXO XI,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.3 DO ANEXO I",Médio,Alto,35.0,40.0,45.0
+ANEXO XI,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.3 DO ANEXO I",Mínimo,Alto,25.0,30.0,35.0
+ANEXO XI,"Tabela de valores da TLP, TLI E TLO das atividades e empreendimentos descritos no item 5.3 DO ANEXO I",Pequeno,Alto,30.0,35.0,40.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Excepcional,Alto,700.0,700.0,1400.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Excepcional,Médio,10.0,120.0,230.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Grande,Alto,380.0,380.0,910.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Grande,Baixo,280.0,280.0,280.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Grande,Médio,10.0,80.0,130.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Médio,Alto,130.0,130.0,400.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Médio,Baixo,125.0,125.0,125.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Médio,Médio,10.0,30.0,50.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Mínimo,Alto,12.0,12.0,20.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Mínimo,Baixo,8.0,8.0,8.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Mínimo,Médio,10.0,10.0,10.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Pequeno,Alto,30.0,30.0,60.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Pequeno,Baixo,40.0,40.0,40.0
+ANEXO XIX,"Tabela de valores da TLP, TLI eTLO das atividades e empreendimentos descritos nos ITENS 71, 72, 73 e 74 do ANEXO I",Pequeno,Médio,10.0,14.0,14.0
+ANEXO XLI,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no item 81.10 do ANEXO I",Excepcional,Médio,10.0,80.0,220.0
+ANEXO XLI,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no item 81.10 do ANEXO I",Grande,Médio,10.0,70.0,190.0
+ANEXO XLI,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no item 81.10 do ANEXO I",Médio,Médio,10.0,60.0,160.0
+ANEXO XLI,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no item 81.10 do ANEXO I",Mínimo,Médio,10.0,40.0,100.0
+ANEXO XLI,"Tabela de valores da TLP, TLI eTLO do empreendimento descrito no item 81.10 do ANEXO I",Pequeno,Médio,10.0,50.0,130.0
+ANEXO XLII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 85 do ANEXO I",Excepcional,Médio,100.0,150.0,500.0
+ANEXO XLII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 85 do ANEXO I",Grande,Médio,80.0,100.0,400.0
+ANEXO XLII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 85 do ANEXO I",Médio,Médio,60.0,80.0,300.0
+ANEXO XLII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 85 do ANEXO I",Mínimo,Médio,20.0,40.0,150.0
+ANEXO XLII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 85 do ANEXO I",Pequeno,Médio,40.0,60.0,200.0
+ANEXO XLIII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 86 do ANEXO I",Excepcional,Baixo,60.0,60.0,60.0
+ANEXO XLIII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 86 do ANEXO I",Excepcional,Médio,90.0,90.0,90.0
+ANEXO XLIII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 86 do ANEXO I",Médio,Baixo,0.0,0.0,0.0
+ANEXO XLIII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 86 do ANEXO I",Médio,Médio,10.0,10.0,20.0
+ANEXO XLIV,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 87 do ANEXO I",Excepcional,Alto,10.0,50.0,70.0
+ANEXO XLIV,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 87 do ANEXO I",Excepcional,Médio,5.0,40.0,50.0
+ANEXO XLV,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90 do ANEXO I",Excepcional,Baixo,0.0,0.0,1.0
+ANEXO XLV,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90 do ANEXO I",Excepcional,Médio,0.0,0.0,1.0
+ANEXO XLV,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90 do ANEXO I",Médio,Baixo,0.0,0.0,1.0
+ANEXO XLV,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90 do ANEXO I",Médio,Médio,0.0,0.0,1.0
+ANEXO XLV,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90 do ANEXO I",Mínimo,Baixo,0.0,0.0,1.0
+ANEXO XLV,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90 do ANEXO I",Mínimo,Médio,0.0,0.0,1.0
+ANEXO XLVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90.2 do ANEXO I",Excepcional,Baixo,15.0,40.0,100.0
+ANEXO XLVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90.2 do ANEXO I",Grande,Baixo,10.0,25.0,70.0
+ANEXO XLVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90.2 do ANEXO I",Médio,Baixo,10.0,20.0,50.0
+ANEXO XLVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90.2 do ANEXO I",Mínimo,Baixo,5.0,8.0,10.0
+ANEXO XLVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 90.2 do ANEXO I",Pequeno,Baixo,10.0,15.0,30.0
+ANEXO XV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 14 do ANEXO I",Excepcional,Alto,10.0,90.0,250.0
+ANEXO XV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 14 do ANEXO I",Grande,Alto,10.0,60.0,150.0
+ANEXO XV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 14 do ANEXO I",Médio,Alto,10.0,35.0,100.0
+ANEXO XV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 14 do ANEXO I",Mínimo,Alto,10.0,20.0,40.0
+ANEXO XV,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 14 do ANEXO I",Pequeno,Alto,10.0,25.0,60.0
+ANEXO XVI,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 15 do ANEXO I.",Grande,Alto,30.0,100.0,300.0
+ANEXO XVI,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 15 do ANEXO I.",Médio,Alto,20.0,50.0,150.0
+ANEXO XVI,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 15 do ANEXO I.",Mínimo,Alto,10.0,12.0,12.0
+ANEXO XVI,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 15 do ANEXO I.",Pequeno,Alto,15.0,25.0,40.0
+ANEXO XVII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 18 do ANEXO I",Grande,Alto,10.0,100.0,230.0
+ANEXO XVII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 18 do ANEXO I",Grande,Baixo,10.0,55.0,150.0
+ANEXO XVII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 18 do ANEXO I",Grande,Médio,10.0,60.0,180.0
+ANEXO XVII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 18 do ANEXO I",Médio,Alto,10.0,80.0,170.0
+ANEXO XVII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 18 do ANEXO I",Médio,Baixo,10.0,25.0,50.0
+ANEXO XVII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 18 do ANEXO I",Médio,Médio,10.0,45.0,120.0
+ANEXO XVIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 19 do ANEXO I.",Excepcional,Médio,10.0,25.0,100.0
+ANEXO XVIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 19 do ANEXO I.",Grande,Médio,10.0,20.0,60.0
+ANEXO XVIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 19 do ANEXO I.",Médio,Médio,10.0,15.0,40.0
+ANEXO XVIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 19 do ANEXO I.",Mínimo,Médio,2.0,5.0,8.0
+ANEXO XVIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos nos ITEM 19 do ANEXO I.",Pequeno,Médio,5.0,7.0,15.0
+ANEXO XX,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITE M 76.1 do ANEXO I",Grande,Alto,20.0,200.0,250.0
+ANEXO XX,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITE M 76.1 do ANEXO I",Pequeno,Alto,20.0,100.0,150.0
+ANEXO XXI,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos nos ITENS 76.2 a 76.4 do ANEXO I",Excepcional,Médio,50.0,50.0,50.0
+ANEXO XXI,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos nos ITENS 76.2 a 76.4 do ANEXO I",Grande,Médio,30.0,30.0,30.0
+ANEXO XXI,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos nos ITENS 76.2 a 76.4 do ANEXO I",Médio,Médio,15.0,15.0,15.0
+ANEXO XXI,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos nos ITENS 76.2 a 76.4 do ANEXO I",Mínimo,Médio,5.0,5.0,5.0
+ANEXO XXI,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos nos ITENS 76.2 a 76.4 do ANEXO I",Pequeno,Médio,10.0,10.0,10.0
+ANEXO XXIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 76.6 e 76.7 do ANEXO I",Excepcional,Alto,125.0,500.0,1500.0
+ANEXO XXIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 76.6 e 76.7 do ANEXO I",Grande,Alto,80.0,400.0,1000.0
+ANEXO XXIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 76.6 e 76.7 do ANEXO I",Médio,Alto,60.0,280.0,620.0
+ANEXO XXIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 76.6 e 76.7 do ANEXO I",Mínimo,Alto,30.0,125.0,270.0
+ANEXO XXIII,"Tabela de valores da TLP, TLI e TLO das atividades e empreendimentos descritos no ITEM 76.6 e 76.7 do ANEXO I",Pequeno,Alto,50.0,160.0,380.0
+ANEXO XXIV,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos no ITEM N. 76.8 do ANEXO I",Excepcional,Alto,220.0,700.0,1500.0
+ANEXO XXIV,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos no ITEM N. 76.8 do ANEXO I",Grande,Alto,150.0,380.0,1100.0
+ANEXO XXIV,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos no ITEM N. 76.8 do ANEXO I",Médio,Alto,100.0,280.0,380.0
+ANEXO XXIV,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos no ITEM N. 76.8 do ANEXO I",Mínimo,Alto,30.0,125.0,125.0
+ANEXO XXIV,"Tabela de valores da TLP, TLI e TLO dos empreendimentos descritos no ITEM N. 76.8 do ANEXO I",Pequeno,Alto,60.0,160.0,160.0
+ANEXO XXVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos no ITEM N. 76.14 doANEXO I",Excepcional,Alto,10.0,10.0,10.0
+ANEXO XXVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos no ITEM N. 76.14 doANEXO I",Grande,Alto,8.0,8.0,8.0
+ANEXO XXVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos no ITEM N. 76.14 doANEXO I",Médio,Alto,6.0,6.0,6.0
+ANEXO XXVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos no ITEM N. 76.14 doANEXO I",Mínimo,Alto,2.0,2.0,2.0
+ANEXO XXVI,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos no ITEM N. 76.14 doANEXO I",Pequeno,Alto,4.0,4.0,4.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Excepcional,Alto,10.0,90.0,140.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Excepcional,Médio,10.0,45.0,100.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Grande,Alto,10.0,60.0,120.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Grande,Baixo,10.0,55.0,55.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Grande,Médio,10.0,35.0,50.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Médio,Alto,10.0,45.0,90.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Médio,Baixo,10.0,35.0,35.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Médio,Médio,10.0,25.0,40.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Mínimo,Alto,10.0,15.0,40.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Mínimo,Baixo,5.0,5.0,5.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Mínimo,Médio,10.0,10.0,25.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Pequeno,Alto,10.0,30.0,60.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Pequeno,Baixo,10.0,25.0,25.0
+ANEXO XXVII,"Tabela de valores da TLP, TLI e TLO do empreendimento descritos nos ITENS N. 76.15 a 76.19 do ANEXO I",Pequeno,Médio,10.0,15.0,30.0
+ANEXO XXVIII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 77.1 do ANEXO I",-,Alto,100.0,100.0,120.0
+ANEXO XXXI,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 77.17 do ANEXO I",-,Médio,5.0,5.0,5.0
+ANEXO XXXII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 79 do ANEXO I",Excepcional,Alto,180.0,430.0,1000.0
+ANEXO XXXII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 79 do ANEXO I",Grande,Alto,150.0,380.0,700.0
+ANEXO XXXII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 79 do ANEXO I",Médio,Alto,120.0,220.0,600.0
+ANEXO XXXII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 79 do ANEXO I",Mínimo,Alto,80.0,125.0,300.0
+ANEXO XXXII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 79 do ANEXO I",Pequeno,Alto,100.0,160.0,400.0
+ANEXO XXXIII,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 79.1 do ANEXO I POTENCIAL",-,Alto,30.0,100.0,150.0
+ANEXO XXXIV,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 79.2 do ANEXO I POTENCIAL",-,Alto,50.0,150.0,200.0
+ANEXO XXXV,"Tabela de valores da TLP, TLI e TLO do empreendimento descrito no ITEM 79.3 do ANEXO I",Mínimo,Alto,80.0,125.0,300.0
+ANEXO XXXVII,"Tabela de valores da TLP, TLI e TL O do empreendimento descrito no ITEM 79.7 do ANEXO I",Excepcional,Alto,50.0,280.0,320.0
+ANEXO XXXVII,"Tabela de valores da TLP, TLI e TL O do empreendimento descrito no ITEM 79.7 do ANEXO I",Grande,Alto,40.0,210.0,280.0
+ANEXO XXXVII,"Tabela de valores da TLP, TLI e TL O do empreendimento descrito no ITEM 79.7 do ANEXO I",Médio,Alto,30.0,175.0,240.0
+ANEXO XXXVII,"Tabela de valores da TLP, TLI e TL O do empreendimento descrito no ITEM 79.7 do ANEXO I",Mínimo,Alto,15.0,35.0,64.0
+ANEXO XXXVII,"Tabela de valores da TLP, TLI e TL O do empreendimento descrito no ITEM 79.7 do ANEXO I",Pequeno,Alto,20.0,70.0,80.0

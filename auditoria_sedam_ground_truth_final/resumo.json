@@ -1,0 +1,14 @@
+{
+  "csv_rows_total": 175,
+  "csv_rows_match_exato": 175,
+  "csv_rows_chave_ok_valor_divergente": 0,
+  "csv_rows_chave_nao_encontrada_no_pdf": 0,
+  "pdf_rows_extraidos_unicos": 175,
+  "pdf_rows_nao_presentes_no_csv": 0,
+  "csv_rows_nao_presentes_no_pdf": 0,
+  "csv_chaves_duplicadas_anexo_porte_potencial": 13,
+  "csv_anexos_total": 33,
+  "pdf_anexos_total": 33,
+  "anexos_no_pdf_faltando_no_csv": [],
+  "anexos_no_csv_nao_encontrados_no_pdf": []
+}

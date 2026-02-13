@@ -22,7 +22,11 @@ def init_db():
             potencial_poluidor TEXT,
             valor_total REAL,
             cnpj_cpf TEXT,
-            cnaes TEXT
+            cnaes TEXT,
+            email TEXT,
+            telefone TEXT,
+            usuario_login TEXT,
+            usuario_nome TEXT
         )
     ''')
     
@@ -33,11 +37,33 @@ def init_db():
         cursor.execute("ALTER TABLE calculos ADD COLUMN cnpj_cpf TEXT")
     if "cnaes" not in columns:
         cursor.execute("ALTER TABLE calculos ADD COLUMN cnaes TEXT")
+    if "email" not in columns:
+        cursor.execute("ALTER TABLE calculos ADD COLUMN email TEXT")
+    if "telefone" not in columns:
+        cursor.execute("ALTER TABLE calculos ADD COLUMN telefone TEXT")
+    if "usuario_login" not in columns:
+        cursor.execute("ALTER TABLE calculos ADD COLUMN usuario_login TEXT")
+    if "usuario_nome" not in columns:
+        cursor.execute("ALTER TABLE calculos ADD COLUMN usuario_nome TEXT")
     
     conn.commit()
     conn.close()
 
-def salvar_calculo(municipio, grupo, atividade, medida, porte, potencial, valor_total, cnpj_cpf="", cnaes=""):
+def salvar_calculo(
+    municipio,
+    grupo,
+    atividade,
+    medida,
+    porte,
+    potencial,
+    valor_total,
+    cnpj_cpf="",
+    cnaes="",
+    email="",
+    telefone="",
+    usuario_login="",
+    usuario_nome="",
+):
     """Salva um novo registro de cálculo no banco de dados."""
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
@@ -45,9 +71,24 @@ def salvar_calculo(municipio, grupo, atividade, medida, porte, potencial, valor_
     data_hora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     cursor.execute('''
-        INSERT INTO calculos (data_hora, municipio, grupo, atividade, medida, porte, potencial_poluidor, valor_total, cnpj_cpf, cnaes)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ''', (data_hora, municipio, grupo, atividade, medida, porte, potencial, valor_total, cnpj_cpf, cnaes))
+        INSERT INTO calculos (
+            data_hora,
+            municipio,
+            grupo,
+            atividade,
+            medida,
+            porte,
+            potencial_poluidor,
+            valor_total,
+            cnpj_cpf,
+            cnaes,
+            email,
+            telefone,
+            usuario_login,
+            usuario_nome
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (data_hora, municipio, grupo, atividade, medida, porte, potencial, valor_total, cnpj_cpf, cnaes, email, telefone, usuario_login, usuario_nome))
     
     conn.commit()
     conn.close()

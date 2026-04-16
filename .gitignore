@@ -35,3 +35,4 @@ historico_calculos.db
 *.png
 *.jpg
 *.jpeg
+.env

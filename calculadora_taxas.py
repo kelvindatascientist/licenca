@@ -518,6 +518,67 @@ MAPA_PORTE_TABELA_PARA_APP = {
 
 
 # =============================
+# EMAIL DE FEEDBACK
+# =============================
+
+def _get_secret(key, default=""):
+    """Lê um segredo do st.secrets (Streamlit Cloud) ou os.environ (local)."""
+    import os
+    try:
+        return st.secrets.get(key, os.environ.get(key, default))
+    except Exception:
+        return os.environ.get(key, default)
+
+
+def enviar_email_feedback(calculo_id, motivo, municipio, atividade, cnpj_cpf, usuario_nome, usuario_login):
+    """Envia um e-mail de notificação de feedback para kelvinpac@gmail.com.
+    Streamlit Cloud: adicione SMTP_USER e SMTP_PASS em Settings > Secrets (formato TOML).
+    Local: defina as mesmas variáveis no arquivo .env ou no ambiente.
+    """
+    import smtplib
+    from email.mime.text import MIMEText
+    from email.mime.multipart import MIMEMultipart
+
+    smtp_host = _get_secret("SMTP_HOST") or "smtp.gmail.com"
+    smtp_port = int(_get_secret("SMTP_PORT") or "587")
+    smtp_user = _get_secret("SMTP_USER")
+    smtp_pass = _get_secret("SMTP_PASS")
+
+    if not smtp_user or not smtp_pass:
+        return False, "SMTP não configurado (defina SMTP_USER e SMTP_PASS)."
+
+    destinatario = "kelvinpac@gmail.com"
+
+    msg = MIMEMultipart()
+    msg["From"] = smtp_user
+    msg["To"] = destinatario
+    msg["Subject"] = f"[Feedback] Discordância no Cálculo #{calculo_id} — {municipio}"
+
+    corpo = f"""Feedback de Discordância Recebido
+===========================================
+ID do Cálculo : {calculo_id}
+Município     : {municipio}
+Atividade     : {atividade}
+CNPJ/CPF      : {cnpj_cpf}
+Usuário       : {usuario_nome} ({usuario_login})
+
+Motivo da Discordância:
+{motivo}
+"""
+    msg.attach(MIMEText(corpo, "plain", "utf-8"))
+
+    try:
+        with smtplib.SMTP(smtp_host, smtp_port) as server:
+            server.ehlo()
+            server.starttls()
+            server.login(smtp_user, smtp_pass)
+            server.sendmail(smtp_user, destinatario, msg.as_string())
+        return True, ""
+    except Exception as exc:
+        return False, str(exc)
+
+
+# =============================
 # CONFIG DA PÁGINA
 # =============================
 
@@ -1462,8 +1523,8 @@ with tab_calc:
         # Inicializa o banco se necessário
         database.init_db()
         
-        # Salva o cálculo
-        database.salvar_calculo(
+        # Salva o cálculo e guarda o ID para o formulário de feedback
+        calculo_id = database.salvar_calculo(
             municipio=municipio_selecionado,
             grupo=grupo_para_salvar,
             atividade=atividade_para_salvar,
@@ -1478,6 +1539,65 @@ with tab_calc:
             usuario_login=st.session_state.get("username", ""),
             usuario_nome=st.session_state.get("name", "")
         )
+        st.session_state["feedback_calculo_id"] = calculo_id
+        st.session_state["feedback_municipio"] = municipio_selecionado
+        st.session_state["feedback_atividade"] = atividade_para_salvar
+        st.session_state["feedback_cnpj_cpf"] = cnpj_cpf
+        st.session_state["feedback_enviado"] = False
+        st.session_state["feedback_mostrar_form"] = False
+
+    # =============================
+    # SEÇÃO DE FEEDBACK
+    # =============================
+    if st.session_state.get("feedback_calculo_id"):
+        st.markdown("---")
+        if st.session_state.get("feedback_enviado"):
+            st.success("Feedback registrado. Obrigado pela sua contribuição!")
+        else:
+            st.markdown("**Você concorda com o resultado do cálculo?**")
+            if not st.session_state.get("feedback_mostrar_form", False):
+                if st.button("Não concordo com o resultado", key="btn_discordo"):
+                    st.session_state["feedback_mostrar_form"] = True
+                    st.rerun()
+            else:
+                motivo_input = st.text_area(
+                    "Descreva o motivo da discordância:",
+                    key="feedback_motivo_text",
+                    height=130,
+                    placeholder="Ex.: O porte calculado parece incorreto para o meu caso...",
+                )
+                col_ok, col_cancel = st.columns([1, 1])
+                with col_ok:
+                    if st.button("Enviar Feedback", key="btn_enviar_feedback", type="primary"):
+                        if motivo_input.strip():
+                            import database as _db
+                            _db.init_db()
+                            _db.salvar_feedback(
+                                calculo_id=st.session_state["feedback_calculo_id"],
+                                motivo=motivo_input.strip(),
+                                usuario_login=st.session_state.get("username", ""),
+                                usuario_nome=st.session_state.get("name", ""),
+                            )
+                            ok, err = enviar_email_feedback(
+                                calculo_id=st.session_state["feedback_calculo_id"],
+                                motivo=motivo_input.strip(),
+                                municipio=st.session_state.get("feedback_municipio", ""),
+                                atividade=st.session_state.get("feedback_atividade", ""),
+                                cnpj_cpf=st.session_state.get("feedback_cnpj_cpf", ""),
+                                usuario_nome=st.session_state.get("name", ""),
+                                usuario_login=st.session_state.get("username", ""),
+                            )
+                            st.session_state["feedback_enviado"] = True
+                            st.session_state["feedback_mostrar_form"] = False
+                            if not ok:
+                                st.warning(f"Feedback salvo, mas não foi possível enviar o e-mail: {err}")
+                            st.rerun()
+                        else:
+                            st.warning("Por favor, descreva o motivo antes de enviar.")
+                with col_cancel:
+                    if st.button("Cancelar", key="btn_cancelar_feedback"):
+                        st.session_state["feedback_mostrar_form"] = False
+                        st.rerun()
 
 # =============================
 # HISTÓRICO / AUDITORIA (ADMIN)
@@ -1508,6 +1628,21 @@ if tab_admin:
             )
         else:
             st.info("Nenhum cálculo registrado ainda.")
+
+        st.markdown("---")
+        st.subheader("💬 Feedbacks de Discordância")
+        df_feedbacks = database.listar_feedbacks()
+        if not df_feedbacks.empty:
+            st.dataframe(df_feedbacks, width="stretch")
+            csv_fb = df_feedbacks.to_csv(index=False).encode("utf-8")
+            st.download_button(
+                "📥 Baixar Feedbacks (CSV)",
+                data=csv_fb,
+                file_name="feedbacks.csv",
+                mime="text/csv",
+            )
+        else:
+            st.info("Nenhum feedback registrado ainda.")
 
 # Rodapé
 st.markdown("---")

@@ -530,7 +530,7 @@ def _get_secret(key, default=""):
         return os.environ.get(key, default)
 
 
-def enviar_email_feedback(calculo_id, motivo, municipio, atividade, cnpj_cpf, usuario_nome, usuario_login):
+def enviar_email_feedback(calculo_id, motivo, municipio, atividade, cnpj_cpf, usuario_nome, usuario_login, detalhes_calculo=None):
     """Envia um e-mail de notificação de feedback para kelvinpac@gmail.com.
     Streamlit Cloud: adicione SMTP_USER e SMTP_PASS em Settings > Secrets (formato TOML).
     Local: defina as mesmas variáveis no arquivo .env ou no ambiente.
@@ -554,6 +554,20 @@ def enviar_email_feedback(calculo_id, motivo, municipio, atividade, cnpj_cpf, us
     msg["To"] = destinatario
     msg["Subject"] = f"[Feedback] Discordância no Cálculo #{calculo_id} — {municipio}"
 
+    d = detalhes_calculo or {}
+
+    # Build fee lines
+    valores_linhas = ""
+    todos_valores = d.get("todos_valores", {})
+    if todos_valores:
+        for servico, dados in todos_valores.items():
+            valores_linhas += (
+                f"  {servico}: {dados.get('valor_ufar', 0):.2f} UFAR/UPFS"
+                f" = R$ {dados.get('valor_reais', 0):.2f}\n"
+            )
+    else:
+        valores_linhas = "  (não disponível)\n"
+
     corpo = f"""Feedback de Discordância Recebido
 ===========================================
 ID do Cálculo : {calculo_id}
@@ -562,7 +576,23 @@ Atividade     : {atividade}
 CNPJ/CPF      : {cnpj_cpf}
 Usuário       : {usuario_nome} ({usuario_login})
 
-Motivo da Discordância:
+--- VARIÁVEIS SELECIONADAS ---
+Grupo / Setor         : {d.get('grupo', '-')}
+CNAEs selecionados    : {d.get('cnaes', '-')}
+Medida informada      : {d.get('medida', '-')}
+
+--- VARIÁVEIS CALCULADAS ---
+Porte                 : {d.get('porte', '-')}
+Potencial Poluidor    : {d.get('potencial', '-')}
+Enquadramento         : {d.get('enquadramento', '-')}
+Órgão responsável     : {d.get('orgao', '-')}
+Tipo de Licença       : {d.get('tipo_licenca', '-')}
+Valor UFIR municipal  : R$ {d.get('valor_ufir', 0):.2f}
+Valor Total           : R$ {d.get('valor_total', 0):.2f}
+
+Detalhamento das Taxas:
+{valores_linhas}
+--- MOTIVO DA DISCORDÂNCIA ---
 {motivo}
 """
     msg.attach(MIMEText(corpo, "plain", "utf-8"))
@@ -1552,6 +1582,19 @@ with tab_calc:
         st.session_state["feedback_cnpj_cpf"] = cnpj_cpf
         st.session_state["feedback_enviado"] = False
         st.session_state["feedback_mostrar_form"] = False
+        st.session_state["feedback_detalhes"] = {
+            "grupo": grupo_para_salvar,
+            "cnaes": "; ".join(cnaes_selecionados),
+            "medida": medida_texto,
+            "porte": porte_texto,
+            "potencial": potencial_poluidor,
+            "enquadramento": enquadramento_info.get("enquadramento", "-"),
+            "orgao": enquadramento_info.get("orgao", "-"),
+            "tipo_licenca": enquadramento_info.get("tipo_licenca", "-"),
+            "valor_ufir": valor_ufir,
+            "valor_total": valor_total_todas,
+            "todos_valores": todos_valores,
+        }
 
     # =============================
     # SEÇÃO DE FEEDBACK
@@ -1593,6 +1636,7 @@ with tab_calc:
                                 cnpj_cpf=st.session_state.get("feedback_cnpj_cpf", ""),
                                 usuario_nome=st.session_state.get("name", ""),
                                 usuario_login=st.session_state.get("username", ""),
+                                detalhes_calculo=st.session_state.get("feedback_detalhes"),
                             )
                             st.session_state["feedback_enviado"] = True
                             st.session_state["feedback_mostrar_form"] = False

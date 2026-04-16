@@ -29,11 +29,13 @@ _LOGIC_FUNCTIONS = {
     "obter_taxa_ufar",
     "calcular_taxa",
     "preparar_atividades",
+    "mapear_cnaes_para_atividades",
 }
 
 # Module-level constants needed by those functions
 _CONSTANTS = {
     "SCORE_MINIMO_MAPEAMENTO_CNAE",
+    "EXCECOES_MAPEAMENTO_CNAE",
     "TIPO_LICENCA_COLUNA",
     "MAPEAMENTO_PORTES_TABELA",
     "MAPA_PORTE_TABELA_PARA_APP",
@@ -119,6 +121,13 @@ def df_taxas_sedam() -> pd.DataFrame:
         if col in df.columns:
             df[col] = df[col].astype(str).str.strip()
     return df
+
+
+@pytest.fixture(scope="session")
+def df_cnaes() -> pd.DataFrame:
+    """Real IBGE CNAE reference table."""
+    path = PROJECT_ROOT / "IBGE_CNAE_Subclass2.3.csv"
+    return pd.read_csv(path, dtype=str).fillna("")
 
 
 @pytest.fixture(scope="session")

@@ -361,3 +361,47 @@ class TestDatabase:
         )
         df = database.listar_calculos()
         assert len(df) == 1
+
+
+# ═══════════════════════════════════════════════════════════════
+# mapear_cnaes_para_atividades — exceções manuais de CNAE
+# ═══════════════════════════════════════════════════════════════
+
+class TestExcecoesMapeamentoCnae:
+    def test_cnae_motocicletas_mapeia_para_veiculos_automotores(
+        self, logic, df_cnaes, df_atividades
+    ):
+        """4543-9/00 deve mapear para oficina mecânica (ITEM 82.2), não para motocicletas."""
+        preparar = logic["preparar_atividades"]
+        mapear = logic["mapear_cnaes_para_atividades"]
+
+        atividades_prep = preparar(df_atividades)
+        resultados = mapear(
+            ["4543-9/00 - Manutenção e reparação de motocicletas e motonetas"],
+            df_cnaes,
+            atividades_prep,
+        )
+
+        assert len(resultados) == 1
+        r = resultados[0]
+        assert r["mapeado"] is True, "Deveria mapear via exceção manual"
+        assert r["atividade"] == "Manutenção e reparação de veículos automotores (oficina mecânica)"
+        assert r["potencial"] == "Médio"
+
+    def test_cnae_sem_excecao_usa_similaridade_normalmente(
+        self, logic, df_cnaes, df_atividades
+    ):
+        """CNAEs sem exceção manual continuam usando o matcher de similaridade."""
+        preparar = logic["preparar_atividades"]
+        mapear = logic["mapear_cnaes_para_atividades"]
+
+        atividades_prep = preparar(df_atividades)
+        # 1099-6/04 não está nas exceções — deve usar similaridade
+        resultados = mapear(
+            ["1099-6/04 - Fabricação de gelo comum"],
+            df_cnaes,
+            atividades_prep,
+        )
+        assert len(resultados) == 1
+        # Should either map or not, but must not raise
+        assert isinstance(resultados[0]["mapeado"], bool)

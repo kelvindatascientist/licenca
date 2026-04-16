@@ -526,10 +526,10 @@ authenticator = stauth.Authenticate(
 authenticator.login()
 
 if st.session_state["authentication_status"] is False:
-    st.error('Username/password is incorrect')
+    st.error('Nome de usuário ou senha incorretos.')
     st.stop()
 elif st.session_state["authentication_status"] is None:
-    st.warning('Please enter your username and password')
+    st.warning('Por favor, insira seu nome de usuário e senha.')
     st.stop()
 
 # Se autenticado, mostra botão de logout na sidebar e continua
@@ -627,8 +627,12 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     header {visibility: hidden;}
     footer {visibility: hidden;}
-    .stDeployButton {display:none;}
-    
+    .stDeployButton {display:none !important;}
+    [data-testid="stToolbar"] {display: none !important;}
+    [data-testid="stDecoration"] {display: none !important;}
+    [data-testid="stStatusWidget"] {display: none !important;}
+    button[kind="headerNoPadding"] {display: none !important;}
+
     /* Hide GitHub/Viewer Badge */
     .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
     .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
@@ -879,15 +883,15 @@ st.markdown("""
 
 # Abas
 if st.session_state["username"] == "admin":
-    tab_calc, tab_admin = st.tabs(["Dados", "🔐 ADMIN"])
+    tab_calc, tab_admin = st.tabs(["🌿 Cálculo de Taxas", "🔐 ADMIN"])
 else:
     # Se não for admin, cria apenas uma aba e define tab_admin como None
-    tab_calc = st.tabs(["Dados"])[0]
+    tab_calc = st.tabs(["🌿 Cálculo de Taxas"])[0]
     tab_admin = None
 
 with tab_calc:
-    # Formulário principal
-    col1, col2 = st.columns([2, 1])
+    # Formulário principal (full width)
+    col1 = st.container()
 
     with col1:
         # 1. CNPJ ou CPF do Empreendedor
@@ -1051,9 +1055,6 @@ with tab_calc:
         else:
             medida_texto = f"{valor_medida}"
 
-    with col2:
-        st.empty()
-
     # =============================
     # CÁLCULO DAS TAXAS
     # =============================
@@ -1212,7 +1213,8 @@ with tab_calc:
             if enquadramento_info["orgao"] == "SEDAM":
                 st.info("Tabela aplicada: SEDAM (Lei 3.941/2016) - valores base em UPFs.")
 
-            col_lic1, col_lic2 = st.columns(2)
+            col_lic1, col_lic2, col_lic3 = st.columns(3)
+            lic_cols = [col_lic1, col_lic2, col_lic3]
 
             for i, (servico, info) in enumerate(SERVICOS.items()):
                 valor_total, valor_ufars = calcular_taxa(
@@ -1240,20 +1242,16 @@ with tab_calc:
                     </div>
                 """
 
-                if i < 3:
-                    with col_lic1:
-                        st.markdown(card_html, unsafe_allow_html=True)
-                else:
-                    with col_lic2:
-                        st.markdown(card_html, unsafe_allow_html=True)
+                with lic_cols[i % 3]:
+                    st.markdown(card_html, unsafe_allow_html=True)
 
             st.markdown("---")
             valor_total_todas = sum(v["valor_reais"] for v in todos_valores.values())
 
             st.markdown(f"""
-                <div style="background-color: #e3f2fd; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #2196f3; margin-bottom: 1rem;">
-                    <h4>ℹ️ Sobre o Potencial Poluidor</h4>
-                    <p>O potencial poluidor <strong>{potencial_poluidor}</strong> foi determinado automaticamente com base na 
+                <div style="background-color: #e8f5f0; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #2d8b6b; margin-bottom: 1rem;">
+                    <h4>🌿 Sobre o Potencial Poluidor</h4>
+                    <p>O potencial poluidor <strong>{potencial_poluidor}</strong> foi determinado automaticamente com base na
                     atividade <em>"{atividade_selecionada}"</em>, conforme estabelecido no <strong>Anexo I da Lei Municipal 2.349/2019</strong>.</p>
                     <p style="font-size: 0.9rem; margin-top: 0.5rem;">Esta classificação afeta diretamente o valor das taxas de licenciamento.</p>
                 </div>
@@ -1327,7 +1325,7 @@ with tab_calc:
             pdf.set_font('Arial', '', 12)
 
             # Dados do Empreendimento
-            pdf.set_fill_color(200, 220, 255)
+            pdf.set_fill_color(178, 223, 205)
             pdf.cell(0, 10, 'Dados do Empreendimento', 0, 1, 'L', 1)
             pdf.ln(5)
             
@@ -1377,7 +1375,7 @@ with tab_calc:
 
             # Valores
             pdf.set_font('Arial', '', 12)
-            pdf.set_fill_color(200, 220, 255)
+            pdf.set_fill_color(178, 223, 205)
             pdf.cell(0, 10, 'Valores Estimados das Taxas', 0, 1, 'L', 1)
             pdf.ln(5)
 
@@ -1497,9 +1495,9 @@ if tab_admin:
 st.markdown("---")
 st.markdown("""
     <div style="text-align: center; color: #666; font-size: 0.9rem; padding: 2rem 0;">
-        <p><strong>Enquadramento de Licenciamento Ambiental</strong></p>
-        <p>Atenas Projetos Ambientais | 2026</p>
-        <p>Sistema com detecção automática de potencial poluidor conforme Lei 2.349/2019</p>
-        <p>⚠️ Os valores apresentados são estimativas. Consulte sempre o órgão ambiental competente.</p>
+        <p style="color: #2d8b6b; font-weight: 600;">🌿 Atenas Projetos Ambientais</p>
+        <p>Enquadramento de Licenciamento Ambiental | Rondônia · 2026</p>
+        <p>Detecção automática de potencial poluidor conforme Lei 2.349/2019</p>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem;">Os valores apresentados são estimativas. Consulte sempre o órgão ambiental competente.</p>
     </div>
 """, unsafe_allow_html=True)

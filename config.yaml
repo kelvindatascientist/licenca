@@ -1,5 +1,11 @@
 credentials:
   usernames:
+    claude:
+      email: claude@anthropic.com
+      failed_login_attempts: 0
+      logged_in: False
+      name: Claude AI
+      password: $2b$12$dHNDTXTaIriKgCxi.qWRh.ERWr1mKc8iNsQuJ7IVAF0y2revfesTW
     admin:
       email: admin@example.com
       failed_login_attempts: 0

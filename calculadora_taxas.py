@@ -467,7 +467,7 @@ def definir_enquadramento(
 ) -> dict:
     """
     Define enquadramento final e órgão.
-    Regra adotada para conflito: potencial Médio e Alto seguem SEDAM; Baixo segue SEMA.
+    Regra adotada: Baixo e Médio seguem SEMA; somente Alto segue SEDAM.
     """
     if municipio != "Ariquemes - RO":
         if is_las:
@@ -481,7 +481,7 @@ def definir_enquadramento(
     if not possui_mapeamento_cnae:
         return {"enquadramento": "Dispensa", "orgao": "SEMA", "tipo_licenca": "Dispensa"}
 
-    if potencial_poluidor == "Baixo":
+    if potencial_poluidor in ("Baixo", "Médio"):
         return {"enquadramento": "LP/LI/LO", "orgao": "SEMA", "tipo_licenca": "LP/LI/LO"}
 
     return {"enquadramento": "LP/LI/LO", "orgao": "SEDAM", "tipo_licenca": "LP/LI/LO"}
@@ -1408,8 +1408,8 @@ with tab_calc:
             st.markdown(
                 f"""
                 <div class="info-box">
-                    <strong>Regra de órgão aplicada:</strong> Potencial <strong>Baixo</strong> = SEMA; potencial
-                    <strong>Médio/Alto</strong> = SEDAM (quando não for LAS/Dispensa).
+                    <strong>Regra de órgão aplicada:</strong> Potencial <strong>Baixo ou Médio</strong> = SEMA; potencial
+                    <strong>Alto</strong> = SEDAM (quando não for LAS/Dispensa).
                 </div>
                 """,
                 unsafe_allow_html=True,

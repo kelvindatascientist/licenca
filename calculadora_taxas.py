@@ -1606,9 +1606,11 @@ with tab_calc:
         else:
             st.markdown("**Você concorda com o resultado do cálculo?**")
             if not st.session_state.get("feedback_mostrar_form", False):
-                if st.button("Não concordo com o resultado", key="btn_discordo"):
-                    st.session_state["feedback_mostrar_form"] = True
-                    st.rerun()
+                col_discordo, _ = st.columns([1, 3])
+                with col_discordo:
+                    if st.button("Não concordo com o resultado", key="btn_discordo", use_container_width=True):
+                        st.session_state["feedback_mostrar_form"] = True
+                        st.rerun()
             else:
                 motivo_input = st.text_area(
                     "Descreva o motivo da discordância:",

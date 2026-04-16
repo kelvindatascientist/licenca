@@ -405,3 +405,183 @@ class TestExcecoesMapeamentoCnae:
         assert len(resultados) == 1
         # Should either map or not, but must not raise
         assert isinstance(resultados[0]["mapeado"], bool)
+
+
+# ═══════════════════════════════════════════════════════════════
+# verificar_cnaes_em_las — edge cases with real spreadsheet
+# ═══════════════════════════════════════════════════════════════
+
+class TestVerificarCnaesEmLasEdgeCases:
+    def test_alternate_format_still_matches(self, logic, df_las):
+        """'1099-6/4' (without leading zero in subclass) must match '1099-6/04'."""
+        fn = logic["verificar_cnaes_em_las"]
+        is_las, matches = fn(["1099-6/4 - Fabricação de gelo comum"], df_las)
+        assert is_las is True, "Short CNAE format should normalise to same key"
+
+    def test_only_digits_format_matches(self, logic, df_las):
+        """'1099604' (pure digits) must also resolve to the same LAS CNAE."""
+        fn = logic["verificar_cnaes_em_las"]
+        is_las, _ = fn(["1099604"], df_las)
+        assert is_las is True
+
+    def test_all_cnaes_non_las_returns_false(self, logic, df_las):
+        fn = logic["verificar_cnaes_em_las"]
+        is_las, matches = fn(
+            ["9999-9/99 - X", "8888-8/88 - Y", "7777-7/77 - Z"], df_las
+        )
+        assert is_las is False
+        assert matches == []
+
+    def test_matches_list_length_equals_las_hits(self, logic, df_las):
+        """matches list must have one entry per LAS-matching CNAE, not per input."""
+        fn = logic["verificar_cnaes_em_las"]
+        # Two real LAS CNAEs + one non-LAS
+        cnaes = [
+            "1099-6/04 - Fabricação de gelo comum",
+            "4723-7/00 - Comércio varejista de bebidas",
+            "9999-9/99 - Fictício",
+        ]
+        is_las, matches = fn(cnaes, df_las)
+        assert is_las is True
+        assert len(matches) == 2
+
+    def test_match_contains_all_expected_keys(self, logic, df_las):
+        fn = logic["verificar_cnaes_em_las"]
+        _, matches = fn(["1099-6/04 - Fabricação de gelo comum"], df_las)
+        required = {"cnae_display", "cnae_codigo", "item_las", "atividade_las"}
+        assert required <= matches[0].keys()
+
+    def test_match_item_las_is_nonempty(self, logic, df_las):
+        fn = logic["verificar_cnaes_em_las"]
+        _, matches = fn(["1099-6/04 - Fabricação de gelo comum"], df_las)
+        assert matches[0]["item_las"] != ""
+
+    def test_match_atividade_las_is_nonempty(self, logic, df_las):
+        fn = logic["verificar_cnaes_em_las"]
+        _, matches = fn(["1099-6/04 - Fabricação de gelo comum"], df_las)
+        assert matches[0]["atividade_las"] != ""
+
+
+# ═══════════════════════════════════════════════════════════════
+# obter_taxa_ufar — SEMA table: exact values from CSV
+# ═══════════════════════════════════════════════════════════════
+
+class TestObterTaxaUfarSemaExactValues:
+    """Verify specific values directly from the SEMA CSV to catch regressions."""
+
+    @pytest.mark.parametrize("porte,pot,servico,expected", [
+        ("Mínimo",      "Baixo", "Licença Prévia",         7.0),
+        ("Mínimo",      "Baixo", "Licença de Instalação",  7.0),
+        ("Mínimo",      "Baixo", "Licença de Operação",   14.0),
+        ("Mínimo",      "Médio", "Licença Prévia",          8.0),
+        ("Mínimo",      "Alto",  "Licença Prévia",         10.0),
+        ("Pequeno",     "Baixo", "Licença Prévia",         12.0),
+        ("Excepcional", "Alto",  "Licença de Operação",   570.0),
+    ])
+    def test_valor_exato(self, logic, df_taxas_sema, porte, pot, servico, expected):
+        fn = logic["obter_taxa_ufar"]
+        val = fn(df_taxas_sema, "ANEXO II", porte, pot, servico)
+        assert val == pytest.approx(expected), (
+            f"SEMA ANEXO II / {porte} / {pot} / {servico}: expected {expected}, got {val}"
+        )
+
+    def test_tli_always_between_tlp_and_tlo_baixo(self, logic, df_taxas_sema):
+        """TLP ≤ TLI ≤ TLO should hold for every porte at Baixo potencial."""
+        fn = logic["obter_taxa_ufar"]
+        portes = ["Mínimo", "Pequeno", "Médio", "Grande", "Excepcional"]
+        for porte in portes:
+            tlp = fn(df_taxas_sema, "ANEXO II", porte, "Baixo", "Licença Prévia")
+            tli = fn(df_taxas_sema, "ANEXO II", porte, "Baixo", "Licença de Instalação")
+            tlo = fn(df_taxas_sema, "ANEXO II", porte, "Baixo", "Licença de Operação")
+            assert tlp <= tli <= tlo, (
+                f"Order violation at {porte}/Baixo: TLP={tlp}, TLI={tli}, TLO={tlo}"
+            )
+
+
+# ═══════════════════════════════════════════════════════════════
+# mapear_cnaes_para_atividades — edge cases
+# ═══════════════════════════════════════════════════════════════
+
+class TestMapearCnaesParaAtividadesEdgeCases:
+    def test_empty_list_returns_empty(self, logic, df_cnaes, df_atividades):
+        preparar = logic["preparar_atividades"]
+        mapear = logic["mapear_cnaes_para_atividades"]
+        atividades_prep = preparar(df_atividades)
+        assert mapear([], df_cnaes, atividades_prep) == []
+
+    def test_result_length_equals_input_length(self, logic, df_cnaes, df_atividades):
+        preparar = logic["preparar_atividades"]
+        mapear = logic["mapear_cnaes_para_atividades"]
+        atividades_prep = preparar(df_atividades)
+        cnaes = [
+            "1099-6/04 - Fabricação de gelo comum",
+            "9999-9/99 - Fictício",
+            "4543-9/00 - Manutenção e reparação de motocicletas",
+        ]
+        resultados = mapear(cnaes, df_cnaes, atividades_prep)
+        assert len(resultados) == 3
+
+    def test_cnae_not_in_reference_is_not_mapped(self, logic, df_cnaes, df_atividades):
+        """A CNAE absent from the IBGE reference gets denominacao='' → score 0 → mapeado=False."""
+        preparar = logic["preparar_atividades"]
+        mapear = logic["mapear_cnaes_para_atividades"]
+        atividades_prep = preparar(df_atividades)
+        resultados = mapear(["9999-9/99 - Atividade Fictícia"], df_cnaes, atividades_prep)
+        assert resultados[0]["mapeado"] is False
+
+    def test_result_has_all_required_keys(self, logic, df_cnaes, df_atividades):
+        preparar = logic["preparar_atividades"]
+        mapear = logic["mapear_cnaes_para_atividades"]
+        atividades_prep = preparar(df_atividades)
+        resultados = mapear(
+            ["4543-9/00 - Manutenção e reparação de motocicletas e motonetas"],
+            df_cnaes, atividades_prep,
+        )
+        required = {"cnae_display", "cnae_codigo", "cnae_denominacao",
+                    "mapeado", "score", "grupo", "atividade", "potencial", "anexo"}
+        assert required <= resultados[0].keys()
+
+    def test_score_is_1_for_manual_override(self, logic, df_cnaes, df_atividades):
+        """Manual EXCECOES_MAPEAMENTO_CNAE overrides must report score=1.0."""
+        preparar = logic["preparar_atividades"]
+        mapear = logic["mapear_cnaes_para_atividades"]
+        atividades_prep = preparar(df_atividades)
+        resultados = mapear(
+            ["4543-9/00 - Manutenção e reparação de motocicletas e motonetas"],
+            df_cnaes, atividades_prep,
+        )
+        assert resultados[0]["score"] == pytest.approx(1.0)
+
+
+# ═══════════════════════════════════════════════════════════════
+# Pipeline: enquadramento final with multiple municipalities
+# ═══════════════════════════════════════════════════════════════
+
+class TestEnquadramentoPipelineEdgeCases:
+    def test_porto_velho_alto_potencial_goes_sema_not_sedam(self, logic, df_las):
+        """Porto Velho must always route to SEMA regardless of potencial."""
+        verificar = logic["verificar_cnaes_em_las"]
+        calcular  = logic["calcular_enquadramento_final"]
+        is_las, _ = verificar(["9999-9/99 - Fictício"], df_las)
+        info, _ = calcular("Porto Velho - RO", True, "Alto", possui_cnae_las=is_las)
+        assert info["orgao"] == "SEMA"
+
+    def test_cnae_las_alternate_format_enquadra_como_las(self, logic, df_las):
+        """Short CNAE format should also trigger LAS enquadramento."""
+        verificar = logic["verificar_cnaes_em_las"]
+        calcular  = logic["calcular_enquadramento_final"]
+        is_las, _ = verificar(["1099-6/4 - Fabricação de gelo"], df_las)
+        info, las_flag = calcular("Ariquemes - RO", True, "Alto", possui_cnae_las=is_las)
+        assert info["enquadramento"] == "LAS"
+        assert las_flag is True
+
+    def test_multiple_cnaes_one_las_enquadra_como_las(self, logic, df_las):
+        """Even if only one of several CNAEs is in LAS, the result must be LAS."""
+        verificar = logic["verificar_cnaes_em_las"]
+        calcular  = logic["calcular_enquadramento_final"]
+        is_las, _ = verificar([
+            "9999-9/99 - Fictício",
+            "1099-6/04 - Fabricação de gelo comum",
+        ], df_las)
+        info, las_flag = calcular("Ariquemes - RO", True, "Alto", possui_cnae_las=is_las)
+        assert info["enquadramento"] == "LAS"

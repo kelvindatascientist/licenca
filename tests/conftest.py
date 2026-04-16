@@ -55,9 +55,21 @@ def load_logic() -> dict:
     source = (PROJECT_ROOT / "calculadora_taxas.py").read_text(encoding="utf-8")
     tree = ast.parse(source, filename="calculadora_taxas.py")
 
+    # Modules that are not needed by the extracted functions and will fail to import
+    # in test environments (no Streamlit UI, no auth module installed).
+    _SKIP_MODULES = {"streamlit", "streamlit_authenticator", "yaml", "fpdf"}
+
     selected: list[ast.stmt] = []
     for node in tree.body:
-        if isinstance(node, (ast.Import, ast.ImportFrom)):
+        if isinstance(node, ast.Import):
+            names = [alias.name.split(".")[0] for alias in node.names]
+            if any(n in _SKIP_MODULES for n in names):
+                continue
+            selected.append(node)
+        elif isinstance(node, ast.ImportFrom):
+            root = (node.module or "").split(".")[0]
+            if root in _SKIP_MODULES:
+                continue
             selected.append(node)
         elif isinstance(node, ast.FunctionDef) and node.name in _LOGIC_FUNCTIONS:
             selected.append(node)

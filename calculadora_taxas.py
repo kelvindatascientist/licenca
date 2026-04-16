@@ -711,6 +711,13 @@ st.markdown("""
     [data-testid="stDecoration"] {display: none !important;}
     [data-testid="stStatusWidget"] {display: none !important;}
     button[kind="headerNoPadding"] {display: none !important;}
+    /* Streamlit Cloud: viewer badge (profile photo) and manage-app crown button */
+    [data-testid="stViewerBadge"] {display: none !important;}
+    [data-testid="manage-app-button"] {display: none !important;}
+    .stCloudBadge {display: none !important;}
+    #stDecoration {display: none !important;}
+    div[class*="viewerBadge"] {display: none !important;}
+    div[class*="managedApp"] {display: none !important;}
 
     /* Hide GitHub/Viewer Badge */
     .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,

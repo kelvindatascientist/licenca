@@ -24,3 +24,14 @@ MANIFEST
 *.pyc
 
 generate_keys.py
+
+# Runtime database
+historico_calculos.db
+
+# Playwright MCP artifacts
+.playwright-mcp/
+
+# Screenshot artifacts
+*.png
+*.jpg
+*.jpeg

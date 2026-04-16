@@ -1128,8 +1128,8 @@ with tab_calc:
         render_step_header("4", "Informe a medida do seu empreendimento:", required=True)
 
         if tipo_medicao == "area":
-            label_medida = unidade_medida or "Informe a área (ex.: hectares): *"
-            placeholder_medida = "Ex.: 12,5"
+            label_medida = "Informe a área (m²): *"
+            placeholder_medida = "Ex.: 125000"
         elif tipo_medicao == "potencia":
             label_medida = unidade_medida or "Informe a potência instalada (kW): *"
             placeholder_medida = "Ex.: 150"
@@ -1141,7 +1141,7 @@ with tab_calc:
             label_medida,
             value="",
             placeholder=placeholder_medida,
-            help=f"Unidade de medida: {unidade_medida}" if unidade_medida else None,
+            help="Informe a área em metros quadrados (m²). A conversão para hectares é feita automaticamente." if tipo_medicao == "area" else (f"Unidade de medida: {unidade_medida}" if unidade_medida else None),
         )
 
         medida_invalida = False
@@ -1157,16 +1157,21 @@ with tab_calc:
             except ValueError:
                 medida_invalida = True
 
+        # Convert m² to hectares for area-based activities (tables use hectares)
+        valor_medida_calculo = (valor_medida / 10000.0) if tipo_medicao == "area" else valor_medida
+
         # Classifica o porte usando ANEXO I (PORTE_*_MIN/MAX)
-        porte_encontrado = classificar_porte_por_linha_valor(float(valor_medida), linha_atividade)
-        
+        porte_encontrado = classificar_porte_por_linha_valor(float(valor_medida_calculo), linha_atividade)
+
         if porte_encontrado is None:
             porte_texto = "Não Definido"
         else:
             porte_texto = MAPA_PORTE_TABELA_PARA_APP.get(porte_encontrado, porte_encontrado)
 
         # Texto amigável para o resumo lateral
-        if unidade_medida:
+        if tipo_medicao == "area":
+            medida_texto = f"{valor_medida} m² ({valor_medida_calculo:.4f} ha)"
+        elif unidade_medida:
             medida_texto = f"{valor_medida} ({unidade_medida})"
         else:
             medida_texto = f"{valor_medida}"

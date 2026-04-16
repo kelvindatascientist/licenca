@@ -31,6 +31,13 @@ LAS_XLSX_PATH = "Lista de atividades LAS E CNAES.xlsx"
 # Quanto maior, menor risco de falso positivo.
 SCORE_MINIMO_MAPEAMENTO_CNAE = 0.75
 
+# Exceções manuais: CNAE normalizado -> atividade exata no Anexo I.
+# Use quando o matcher de similaridade não encontra a correspondência correta.
+EXCECOES_MAPEAMENTO_CNAE = {
+    # 4543-9/00 (motocicletas/motonetas) mapeia para oficina mecânica de veículos automotores
+    "4543900": "Manutenção e reparação de veículos automotores (oficina mecânica)",
+}
+
 
 # =============================
 # CÁLCULO DE PORTE A PARTIR DE PORTE_*_MIN/MAX
@@ -309,20 +316,31 @@ def mapear_cnaes_para_atividades(
         denominacao = cnae_map.get(codigo_norm, "")
         den_norm = normalizar_texto(denominacao)
 
-        melhor_idx = None
-        melhor_score = 0.0
-        for idx, row in atividades_sub.iterrows():
-            atividade_norm = row["ATIVIDADE_NORM"]
-            if not den_norm or not atividade_norm:
-                score = 0.0
-            elif den_norm in atividade_norm or atividade_norm in den_norm:
-                score = 1.0
+        # Verificar exceções manuais antes de recorrer à similaridade
+        excecao_atividade = EXCECOES_MAPEAMENTO_CNAE.get(codigo_norm)
+        if excecao_atividade:
+            match = atividades_sub[atividades_sub["Atividade"] == excecao_atividade]
+            if not match.empty:
+                melhor_idx = match.index[0]
+                melhor_score = 1.0
             else:
-                score = SequenceMatcher(None, den_norm, atividade_norm).ratio()
+                melhor_idx = None
+                melhor_score = 0.0
+        else:
+            melhor_idx = None
+            melhor_score = 0.0
+            for idx, row in atividades_sub.iterrows():
+                atividade_norm = row["ATIVIDADE_NORM"]
+                if not den_norm or not atividade_norm:
+                    score = 0.0
+                elif den_norm in atividade_norm or atividade_norm in den_norm:
+                    score = 1.0
+                else:
+                    score = SequenceMatcher(None, den_norm, atividade_norm).ratio()
 
-            if score > melhor_score:
-                melhor_score = score
-                melhor_idx = idx
+                if score > melhor_score:
+                    melhor_score = score
+                    melhor_idx = idx
 
         mapeado = melhor_idx is not None and melhor_score >= SCORE_MINIMO_MAPEAMENTO_CNAE
         atividade = ""
